@@ -1,0 +1,11 @@
+{
+  "name": "ficomercios",
+  "private": true,
+  "description": "Sitio de canales digitales Fincomercio",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
