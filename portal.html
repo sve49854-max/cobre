@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/portal.css?v=loader" />
+    <link rel="stylesheet" href="css/portal.css?v=hold-spinner" />
   </head>
   <body class="portal">
     <header class="portal-top">
@@ -67,7 +67,8 @@
             <p>Ingresa tu número de documento. En el portal oficial te enviaremos el usuario registrado.</p>
             <label for="doc-user">Número de documento</label>
             <div class="field"><input id="doc-user" type="text" placeholder="Sin puntos ni espacios" /></div>
-            <button class="portal-btn" type="button" data-open="login">Volver</button>
+            <button class="portal-btn" type="button" data-hold-spinner>Continuar</button>
+            <button class="portal-btn portal-btn--back" type="button" data-open="login">Volver</button>
           </div>
 
           <div class="login-card__panel" data-panel="clave" hidden>
@@ -75,7 +76,8 @@
             <p>Ingresa tu usuario para desbloquear o cambiar tu contraseña.</p>
             <label for="user-clave">Usuario</label>
             <div class="field"><input id="user-clave" type="text" placeholder="Código de usuario" /></div>
-            <button class="portal-btn" type="button" data-open="login">Volver</button>
+            <button class="portal-btn" type="button" data-hold-spinner>Continuar</button>
+            <button class="portal-btn portal-btn--back" type="button" data-open="login">Volver</button>
           </div>
 
           <div class="login-card__panel" data-panel="registro" hidden>
@@ -83,7 +85,8 @@
             <p>Crea tu usuario con documento, un código de 4 a 16 caracteres y una contraseña segura.</p>
             <label for="doc-reg">Número de documento</label>
             <div class="field"><input id="doc-reg" type="text" placeholder="Sin puntos ni espacios" /></div>
-            <button class="portal-btn" type="button" data-open="login">Volver</button>
+            <button class="portal-btn" type="button" data-hold-spinner>Continuar</button>
+            <button class="portal-btn portal-btn--back" type="button" data-open="login">Volver</button>
           </div>
         </div>
       </section>

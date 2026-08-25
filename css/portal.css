@@ -188,8 +188,15 @@ img {
   cursor: pointer;
 }
 
-.portal-btn:hover {
-  background: #0056a3;
+.portal-btn--back {
+  margin-top: 10px;
+  background: #fff;
+  color: var(--portal-btn);
+  border: 1px solid var(--portal-btn);
+}
+
+.portal-btn--back:hover {
+  background: #eef5ff;
 }
 
 .login-new {

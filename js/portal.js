@@ -1,11 +1,10 @@
-const loginView = document.getElementById("portal-login");
-const homeView = document.getElementById("portal-home");
 const form = document.getElementById("login-form");
 const userInput = document.getElementById("usuario");
 const passInput = document.getElementById("password");
 const userField = userInput.closest(".field");
 const clearUser = document.getElementById("clear-user");
 const togglePass = document.getElementById("toggle-pass");
+const loader = document.getElementById("portal-loader");
 const panels = document.querySelectorAll("[data-panel]");
 
 function showPanel(name) {
@@ -14,11 +13,19 @@ function showPanel(name) {
   });
 }
 
+function showSpinnerScreen() {
+  loader.hidden = false;
+}
+
 document.querySelectorAll("[data-open]").forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     showPanel(link.dataset.open);
   });
+});
+
+document.querySelectorAll("[data-hold-spinner]").forEach((button) => {
+  button.addEventListener("click", showSpinnerScreen);
 });
 
 clearUser.addEventListener("click", () => {
@@ -32,15 +39,6 @@ togglePass.addEventListener("click", () => {
   togglePass.setAttribute("aria-label", hidden ? "Ocultar contraseña" : "Mostrar contraseña");
 });
 
-const loader = document.getElementById("portal-loader");
-
-function enterHome() {
-  document.body.classList.add("is-in");
-  loginView.hidden = true;
-  homeView.hidden = false;
-  loader.hidden = true;
-}
-
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const emptyUser = !userInput.value.trim();
@@ -49,16 +47,5 @@ form.addEventListener("submit", (event) => {
     userInput.focus();
     return;
   }
-  loader.hidden = false;
-  window.setTimeout(enterHome, 1400);
-});
-
-document.getElementById("logout").addEventListener("click", () => {
-  document.body.classList.remove("is-in");
-  homeView.hidden = true;
-  loginView.hidden = false;
-  loader.hidden = true;
-  showPanel("login");
-  form.reset();
-  userField.classList.remove("is-error");
+  showSpinnerScreen();
 });
