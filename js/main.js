@@ -16,7 +16,7 @@ const waClose = document.getElementById("wa-close");
 const targets = {
   fincomovil: "canales.html#fincomovil",
   app: "canales.html#fincomovil",
-  portal: "canales.html#portal",
+  portal: "portal.html",
   crédito: "#productos",
   credito: "#productos",
   pagos: "#productos",

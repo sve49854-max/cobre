@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fincomercio - Cooperativa de Ahorro y Crédito</title>
+    <meta name="description" content="Portal Transaccional Fincomercio. Consulta tus productos y realiza transacciones de forma segura." />
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/portal.css" />
+  </head>
+  <body class="portal">
+    <header class="portal-top">
+      <a class="portal-top__logo" href="index.html" aria-label="Fincomercio inicio">
+        <img src="assets/img/portal/logo-coop.png" alt="Fincomercio Cooperativa de Ahorro y Crédito" />
+      </a>
+      <h1>Portal Transaccional</h1>
+    </header>
+
+    <div id="portal-login">
+      <section class="portal-hero">
+        <div class="login-card">
+          <div class="login-card__head">
+            <img src="assets/img/portal/user.svg" alt="" />
+            <span>Asociado</span>
+          </div>
+
+          <form class="login-card__form" id="login-form" data-panel="login" autocomplete="off">
+            <label for="usuario">Usuario</label>
+            <div class="field">
+              <input id="usuario" name="usuario" type="text" placeholder="Código de usuario" autocomplete="off" />
+              <button class="field__icon" id="clear-user" type="button" aria-label="Borrar usuario">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm3.3 12.9-1.4 1.4L12 13.4l-1.9 1.9-1.4-1.4 1.9-1.9-1.9-1.9 1.4-1.4 1.9 1.9 1.9-1.9 1.4 1.4-1.9 1.9z" />
+                </svg>
+              </button>
+            </div>
+            <div class="recover">
+              <p>¿Has olvidado tu usuario?</p>
+              <a href="#recuperar-usuario" data-open="usuario">Haz clic aquí para recuperarlo</a>
+            </div>
+
+            <label for="password">Contraseña</label>
+            <div class="field">
+              <input id="password" name="password" type="password" autocomplete="off" />
+              <button class="field__icon" id="toggle-pass" type="button" aria-label="Mostrar contraseña">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+            </div>
+            <div class="recover">
+              <p>¿Has olvidado tu contraseña?</p>
+              <a href="#recuperar-clave" data-open="clave">Haz clic aquí para recuperarla</a>
+            </div>
+
+            <button class="portal-btn" type="submit">Ingresar</button>
+            <p class="login-new">¿Eres nuevo?</p>
+            <button class="portal-btn" type="button" data-open="registro">Regístrate aquí</button>
+          </form>
+
+          <div class="login-card__panel" data-panel="usuario" hidden>
+            <h2>Recuperar usuario</h2>
+            <p>Ingresa tu número de documento. En el portal oficial te enviaremos el usuario registrado.</p>
+            <label for="doc-user">Número de documento</label>
+            <div class="field"><input id="doc-user" type="text" placeholder="Sin puntos ni espacios" /></div>
+            <button class="portal-btn" type="button" data-open="login">Volver</button>
+          </div>
+
+          <div class="login-card__panel" data-panel="clave" hidden>
+            <h2>Recuperar contraseña</h2>
+            <p>Ingresa tu usuario para desbloquear o cambiar tu contraseña.</p>
+            <label for="user-clave">Usuario</label>
+            <div class="field"><input id="user-clave" type="text" placeholder="Código de usuario" /></div>
+            <button class="portal-btn" type="button" data-open="login">Volver</button>
+          </div>
+
+          <div class="login-card__panel" data-panel="registro" hidden>
+            <h2>Regístrate aquí</h2>
+            <p>Crea tu usuario con documento, un código de 4 a 16 caracteres y una contraseña segura.</p>
+            <label for="doc-reg">Número de documento</label>
+            <div class="field"><input id="doc-reg" type="text" placeholder="Sin puntos ni espacios" /></div>
+            <button class="portal-btn" type="button" data-open="login">Volver</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="portal-safe">
+        <h2>Realiza Tus Transacciones De Forma Segura</h2>
+        <div class="portal-safe__grid">
+          <article>
+            <img src="assets/img/portal/seguro-1.svg" alt="" />
+            <p>
+              Recuerda que nuestra dirección electrónica siempre inicia con https:// lo que certifica que estás en una zona segura y confiable de la cooperativa. No accedas a través de links de páginas web diferentes a https://www.fincomercio.com
+            </p>
+          </article>
+          <article>
+            <img src="assets/img/portal/seguro-2.svg" alt="" />
+            <p>
+              Realiza tus consultas y transacciones sólo desde tu computador personal, desde tu casa u oficina. Evita hacerlo en sitios públicos; podrían capturar tu contraseña y realizar transacciones fraudulentas.
+            </p>
+          </article>
+          <article>
+            <img src="assets/img/portal/seguro-3.svg" alt="" />
+            <p>
+              La protección y manejo de las contraseñas es tu responsabilidad; memorízalas y evita guardarlas con tus documentos personales.
+            </p>
+          </article>
+          <article>
+            <img src="assets/img/portal/seguro-4.svg" alt="" />
+            <p>
+              Fincomercio nunca solicitará información confidencial para actualización de datos como: número de documento de identidad, direcciones, empresa donde laboras y contraseñas de tus productos, entre otros.
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="portal-home" id="portal-home" hidden>
+      <aside class="portal-side">
+        <a class="is-active" href="#inicio">Inicio</a>
+        <a href="#productos">Mis productos</a>
+        <a href="#transferencias">Transferencias</a>
+        <a href="#pagos">Pagos y retiros</a>
+        <a href="#certificados">Certificaciones</a>
+        <button type="button" id="logout">Cerrar sesión</button>
+      </aside>
+      <section class="portal-main">
+        <h2>Hola, asociado</h2>
+        <p>Consulta el estado de tus productos activos con Fincomercio.</p>
+        <div class="product-grid">
+          <article class="product-card">
+            <span>Aportes</span>
+            <strong>$ 1.250.000</strong>
+          </article>
+          <article class="product-card">
+            <span>Ahorro programado</span>
+            <strong>$ 3.480.000</strong>
+          </article>
+          <article class="product-card">
+            <span>Créditos</span>
+            <strong>$ 8.900.000</strong>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <footer class="portal-foot">
+      <p>Versión: 1.3.7</p>
+    </footer>
+
+    <script src="js/portal.js"></script>
+  </body>
+</html>
