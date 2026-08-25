@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sucursal Virtual de Recaudo</title>
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/recaudo.css" />
+  </head>
+  <body class="svr">
+    <header class="svr-top">
+      <a href="index.html" aria-label="Fincomercio inicio">
+        <img src="assets/img/recaudo/logo-blanco.png" alt="Fincomercio Cooperativa de Ahorro y Crédito" />
+      </a>
+    </header>
+
+    <main class="svr-main">
+      <section class="svr-card">
+        <div class="svr-card__head">
+          <p>Bienvenido SVR</p>
+          <span>sucursal virtual de recaudo</span>
+        </div>
+        <form class="svr-card__form" id="login-form" autocomplete="off">
+          <label for="usuario">Usuario</label>
+          <input id="usuario" name="usuario" type="text" autocomplete="off" />
+          <label for="password">Contraseña</label>
+          <input id="password" name="password" type="password" autocomplete="off" />
+          <a class="svr-forgot" href="#clave" id="forgot-pass">Olvide mi contraseña</a>
+          <button class="svr-btn" type="submit">Ingresar</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="svr-foot"></footer>
+
+    <div class="svr-loader" id="portal-loader" hidden>
+      <div class="svr-spinner" id="portal-spinner" role="status" aria-label="Cargando"></div>
+      <div class="otp-card" id="otp-card" hidden>
+        <div class="otp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 72 72" fill="none">
+            <circle cx="36" cy="36" r="34" stroke="#005eb8" stroke-width="2" />
+            <rect x="18" y="24" width="36" height="24" rx="3" stroke="#005eb8" stroke-width="2" />
+            <path d="M18 28l18 12 18-12" stroke="#005eb8" stroke-width="2" fill="none" />
+            <path d="M50 22h8M54 18v8" stroke="#f4c400" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h2>Ingresa el código de verificación</h2>
+        <p>
+          Para continuar con su visualización enviaremos un código de verificación
+          al correo electrónico o al SMS que tiene registrado.
+        </p>
+        <div class="otp-boxes" id="otp-boxes">
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 1" />
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 2" />
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 3" />
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 4" />
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 5" />
+        </div>
+        <button class="otp-resend" type="button" id="otp-resend">Reenviar código</button>
+        <p class="otp-note" id="otp-note" hidden>Código reenviado</p>
+        <button class="otp-btn" type="button" id="otp-validar">Validar</button>
+        <button class="otp-btn otp-btn--ghost" type="button" id="otp-cancelar">Cancelar</button>
+      </div>
+    </div>
+
+    <script src="js/recaudo.js"></script>
+  </body>
+</html>
