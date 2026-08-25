@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/styles.css?v=header-colors" />
+    <link rel="stylesheet" href="css/styles.css?v=static-nav" />
   </head>
   <body class="home">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -25,39 +25,17 @@
 
         <nav class="nav" id="nav" aria-label="Principal">
           <ul class="nav__list">
-            <li class="has-menu">
-              <button class="nav__link" data-menu="nosotros" aria-expanded="false">
-                Nosotros <span class="chevron"></span>
-              </button>
-              <div class="dropdown" id="menu-nosotros">
-                <a href="#nosotros">Nuestra cooperativa</a>
-                <a href="#nosotros">Historia</a>
-                <a href="#nosotros">Gobierno corporativo</a>
-              </div>
+            <li>
+              <span class="nav__link nav__link--static">Nosotros <span class="chevron"></span></span>
             </li>
-            <li class="has-menu">
-              <button class="nav__link" data-menu="beneficios" aria-expanded="false">
-                Beneficios <span class="chevron"></span>
-              </button>
-              <div class="dropdown" id="menu-beneficios">
-                <a href="#seguros">Seguros aliados</a>
-                <a href="#info">Educación financiera</a>
-                <a href="#eventos">Eventos y bienestar</a>
-              </div>
+            <li>
+              <span class="nav__link nav__link--static">Beneficios <span class="chevron"></span></span>
             </li>
-            <li class="has-menu">
-              <button class="nav__link" data-menu="productos" aria-expanded="false">
-                Productos <span class="chevron"></span>
-              </button>
-              <div class="dropdown" id="menu-productos">
-                <a href="#productos">Crédito educativo</a>
-                <a href="#productos">Ahorro digital</a>
-                <a href="#productos">CDAT digital</a>
-                <a href="#productos">Tienda virtual</a>
-              </div>
+            <li>
+              <span class="nav__link nav__link--static">Productos <span class="chevron"></span></span>
             </li>
-            <li><a class="nav__link" href="https://vinculate.fincomercio.com/consultor/autogestion" target="_blank" rel="noopener">Vincúlate</a></li>
-            <li><a class="nav__link" href="https://www.fincomercio.com/centro-de-pagos/" target="_blank" rel="noopener">Centro de pagos</a></li>
+            <li><span class="nav__link nav__link--static">Vincúlate</span></li>
+            <li><span class="nav__link nav__link--static">Centro de pagos</span></li>
             <li class="has-menu">
               <button class="header-pill header-pill--canales" data-menu="canales" aria-expanded="false">
                 Canales digitales <span class="chevron chevron--light"></span>
@@ -69,7 +47,7 @@
               </div>
             </li>
             <li>
-              <a class="header-pill header-pill--breb" href="https://www.fincomercio.com/bre-b" target="_blank" rel="noopener">Bre-B</a>
+              <span class="header-pill header-pill--breb">Bre-B</span>
             </li>
           </ul>
         </nav>

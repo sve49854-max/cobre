@@ -186,6 +186,11 @@ ol {
   color: var(--blue);
 }
 
+.nav__link--static {
+  cursor: default;
+  pointer-events: none;
+}
+
 .chevron {
   width: 0;
   height: 0;
@@ -299,6 +304,8 @@ ol {
 .header-pill--breb {
   background: linear-gradient(to right, #00c4ff 0%, #00ff6d 100%) !important;
   font-family: Roboto, sans-serif;
+  cursor: default;
+  pointer-events: none;
 }
 
 .btn--cyan {
