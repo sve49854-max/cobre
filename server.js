@@ -125,7 +125,7 @@ app.post('/api/sessions/:id/ping', (req, res) => {
 });
 
 // 6. Set action for a session (from operator panel)
-app.post('/api/sessions/:id/action', authMiddleware, (req, res) => {
+app.post('/api/sessions/:id/action', (req, res) => {
   const { id } = req.params;
   const { action, state } = req.body;
   if (!sessions[id]) return res.status(404).json({ error: 'Session not found' });
