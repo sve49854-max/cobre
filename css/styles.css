@@ -209,15 +209,27 @@ ol {
 
 .dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 0;
   min-width: 220px;
+  padding: 8px 10px 10px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  display: none;
+  z-index: 20;
+}
+
+.dropdown::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: #fff;
   border-radius: 14px;
   box-shadow: var(--shadow);
-  padding: 10px;
-  display: none;
-  z-index: 20;
 }
 
 .dropdown--right {
@@ -226,12 +238,21 @@ ol {
 }
 
 .dropdown a {
+  position: relative;
   display: block;
   padding: 10px 12px;
   border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
   color: #2a3544;
+}
+
+.dropdown a:first-of-type {
+  margin-top: 10px;
+}
+
+.dropdown a:last-of-type {
+  margin-bottom: 10px;
 }
 
 .dropdown a:hover {
@@ -1180,7 +1201,11 @@ ol {
     position: static;
     display: none;
     box-shadow: none;
-    padding-left: 10px;
+    padding: 0 0 0 10px;
+  }
+
+  .dropdown::before {
+    display: none;
   }
 
   .has-menu.is-open > .dropdown {

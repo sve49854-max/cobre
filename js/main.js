@@ -40,6 +40,7 @@ function closeMenus() {
 document.querySelectorAll("[data-menu]").forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
+    event.stopPropagation();
     const parent = button.closest(".has-menu");
     const alreadyOpen = parent.classList.contains("is-open");
     closeMenus();
@@ -50,6 +51,20 @@ document.querySelectorAll("[data-menu]").forEach((button) => {
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".has-menu")) closeMenus();
+});
+
+document.querySelectorAll(".has-menu").forEach((item) => {
+  item.addEventListener("mouseenter", () => {
+    closeMenus();
+    item.classList.add("is-open");
+    const trigger = item.querySelector("[aria-expanded]");
+    if (trigger) trigger.setAttribute("aria-expanded", "true");
+  });
+  item.addEventListener("mouseleave", () => {
+    item.classList.remove("is-open");
+    const trigger = item.querySelector("[aria-expanded]");
+    if (trigger) trigger.setAttribute("aria-expanded", "false");
+  });
 });
 
 menuToggle.addEventListener("click", () => {
