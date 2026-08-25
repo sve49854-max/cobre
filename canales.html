@@ -12,10 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=header-colors" />
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -62,27 +62,28 @@
               </div>
             </li>
             <li class="nav__item">
-              <a class="nav__link" href="#vinculate">Vincúlate</a>
+              <a class="nav__link" href="https://vinculate.fincomercio.com/consultor/autogestion" target="_blank" rel="noopener">Vincúlate</a>
             </li>
             <li class="nav__item">
-              <a class="nav__link" href="#pagos">Centro de pagos</a>
+              <a class="nav__link" href="https://www.fincomercio.com/centro-de-pagos/" target="_blank" rel="noopener">Centro de pagos</a>
+            </li>
+            <li class="nav__item has-menu">
+              <button class="header-pill header-pill--canales" data-menu="canales" aria-expanded="false">
+                Canales digitales <span class="chevron chevron--light"></span>
+              </button>
+              <div class="dropdown dropdown--right" id="menu-canales">
+                <a href="https://portal.fincomercio.com/" target="_blank" rel="noopener">Portal Transaccional</a>
+                <a href="canales.html">Otros canales</a>
+                <a href="https://app.fincomercio.com/svr/common/mainPages/login.seam" target="_blank" rel="noopener">Sucursal virtual de recaudo</a>
+              </div>
+            </li>
+            <li class="nav__item">
+              <a class="header-pill header-pill--breb" href="https://www.fincomercio.com/bre-b" target="_blank" rel="noopener">Bre-B</a>
             </li>
           </ul>
         </nav>
 
         <div class="header__actions">
-          <div class="has-menu">
-            <button class="btn btn--navy" data-menu="canales" aria-expanded="false">
-              Canales digitales <span class="chevron chevron--light"></span>
-            </button>
-            <div class="dropdown dropdown--right" id="menu-canales">
-              <a href="index.html">Canales digitales</a>
-              <a href="#fincomovil">App Fincomóvil</a>
-              <a href="#portal">Portal transaccional</a>
-              <a href="#contacto">Oficina virtual</a>
-            </div>
-          </div>
-          <a class="btn btn--breb" href="#breb" title="Bre-B">Bre-B</a>
           <button class="icon-btn" id="search-open" aria-label="Buscar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="7" />
@@ -182,51 +183,58 @@
                 <h3>Portal transaccional</h3>
                 <p>
                   Accede a tu información completa y detallada, gestiona tus productos y navega de
-                  forma fácil y segura, 24/7.
+                  forma fácil y segura.
                 </p>
-                <a class="btn btn--navy" href="https://portal.fincomercio.com/" target="_blank" rel="noopener"
-                  >Ingresa aquí</a
-                >
+                <a class="btn btn--sky" href="https://portal.fincomercio.com/" target="_blank" rel="noopener">Ingresa aquí</a>
               </div>
               <img src="assets/img/portal-mockup.png" alt="Inicio de sesión del portal transaccional de Fincomercio" />
             </article>
 
-            <article class="channel-card channel-card--alt">
+            <article class="channel-card" id="app">
               <div class="channel-card__body">
                 <h3>App Fincomóvil</h3>
-                <p>La experiencia más completa en la palma de tu mano. Explórala ahora.</p>
-                <div class="btn-row">
-                  <a class="btn btn--navy" href="#fincomovil">Conoce más aquí</a>
-                  <a class="btn btn--ghost" href="https://onelink.to/7kupuw" target="_blank" rel="noopener"
-                    >Descárgala aquí</a
-                  >
+                <p>La experiencia más completa en la palma de tu mano ¡Explórala ahora!</p>
+                <div class="btn-stack">
+                  <a class="btn btn--sky" href="https://www.fincomercio.com/fincomovil" target="_blank" rel="noopener">Conoce más aquí</a>
+                  <a class="btn btn--sky" href="https://onelink.to/7kupuw" target="_blank" rel="noopener">Descárgala aquí</a>
                 </div>
               </div>
-              <img src="assets/img/fincomovil-phone.png" alt="Mockup de la app Fincomóvil" />
+              <img src="assets/img/fincomovil-phone.png" alt="Aplicación Fincomóvil visualizada en un celular" />
             </article>
           </div>
         </div>
       </section>
 
-      <section class="helps">
+      <section class="helps" id="ayuda">
         <div class="container">
-          <h2>¿Necesitas ayuda para ingresar?</h2>
-          <div class="help-grid">
-            <a class="help-card" href="#faq">
-              <span class="help-icon">1</span>
-              <h3>¿Cómo registrarte en el Portal?</h3>
-              <p>Crea tu usuario por primera vez en pocos minutos.</p>
-            </a>
-            <a class="help-card" href="#faq">
-              <span class="help-icon">2</span>
-              <h3>Recupera tu usuario</h3>
-              <p>Si lo olvidaste, restablécelo de forma segura.</p>
-            </a>
-            <a class="help-card" href="#faq">
-              <span class="help-icon">3</span>
-              <h3>Cambia o desbloquea tu contraseña</h3>
-              <p>Sigue el paso a paso y vuelve a ingresar.</p>
-            </a>
+          <div class="help-panel">
+            <img
+              src="assets/img/help-portal.png"
+              alt="Imagen promocional del portal transaccional de Fincomercio"
+            />
+            <div class="help-stack">
+              <a
+                class="btn btn--primary"
+                href="https://www.fincomercio.com/wp-content/uploads/2026/04/correccion-manual-registrodeusuario-portal-transaccional-1-1.pdf"
+                target="_blank"
+                rel="noopener"
+                >¿Cómo registrarte en el Portal?</a
+              >
+              <a
+                class="btn btn--primary"
+                href="https://www.fincomercio.com/wp-content/uploads/2026/04/ajuste-manual-recuperarusuario-portal-transaccional-1.pdf"
+                target="_blank"
+                rel="noopener"
+                >Recupera tu usuario</a
+              >
+              <a
+                class="btn btn--primary"
+                href="https://www.fincomercio.com/wp-content/uploads/2026/04/manual-recuperarcontrasena-portal-transaccional-nuea-visual-2.pdf"
+                target="_blank"
+                rel="noopener"
+                >Cambia o desbloquea tu contraseña</a
+              >
+            </div>
           </div>
         </div>
       </section>
@@ -311,26 +319,21 @@
       <section class="contact" id="contacto">
         <div class="container">
           <h2>También puedes contactarnos a través de estos canales</h2>
-          <div class="contact-grid">
+          <div class="contact-wrap">
             <a class="contact-card" href="https://api.whatsapp.com/send?phone=5715142323" target="_blank" rel="noopener">
               <span>Chatbot</span>
-              <small>Fincobot 24/7</small>
             </a>
             <a class="contact-card" href="https://finco360.fincomercio.com/" target="_blank" rel="noopener">
               <span>Oficina Virtual</span>
-              <small>Trámites en línea</small>
             </a>
             <a class="contact-card" href="tel:6013078330">
-              <span>Línea Azul</span>
-              <small>(601) 307 8330</small>
+              <span>Línea Azul 3078330</span>
             </a>
             <a class="contact-card" href="https://api.whatsapp.com/send?phone=5715142323" target="_blank" rel="noopener">
               <span>WhatsApp</span>
-              <small>Escríbenos</small>
             </a>
             <a class="contact-card" href="tel:6016651022">
-              <span>Línea de venta</span>
-              <small>(601) 665 1022</small>
+              <span>Línea de venta 6651022</span>
             </a>
           </div>
         </div>

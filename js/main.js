@@ -122,17 +122,25 @@ waClose.addEventListener("click", () => {
 function setupSlider(id) {
   const root = document.getElementById(id);
   if (!root) return;
+  const track = root.querySelector(".slider-track") || root;
   const slides = [...root.querySelectorAll(".slide")];
   const dotsWrap = document.querySelector(`.slider-dots[data-for="${id}"]`);
   let index = slides.findIndex((slide) => slide.classList.contains("is-active"));
   if (index < 0) index = 0;
+  let timer;
 
   function go(next) {
     index = (next + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
     slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
     dotsWrap?.querySelectorAll("button").forEach((dot, i) => {
       dot.classList.toggle("is-active", i === index);
     });
+  }
+
+  function restart() {
+    clearInterval(timer);
+    timer = setInterval(() => go(index + 1), 5000);
   }
 
   if (dotsWrap) {
@@ -140,16 +148,22 @@ function setupSlider(id) {
       .map((_, i) => `<button type="button" aria-label="Ir a la diapositiva ${i + 1}"></button>`)
       .join("");
     dotsWrap.querySelectorAll("button").forEach((dot, i) => {
-      dot.addEventListener("click", () => go(i));
+      dot.addEventListener("click", () => {
+        go(i);
+        restart();
+      });
     });
   }
 
   document.querySelectorAll(`[data-slider="${id}"]`).forEach((button) => {
-    button.addEventListener("click", () => go(index + Number(button.dataset.dir)));
+    button.addEventListener("click", () => {
+      go(index + Number(button.dataset.dir));
+      restart();
+    });
   });
 
   go(index);
-  setInterval(() => go(index + 1), 6000);
+  restart();
 }
 
 setupSlider("hero-slider");
