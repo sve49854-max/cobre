@@ -32,6 +32,15 @@ togglePass.addEventListener("click", () => {
   togglePass.setAttribute("aria-label", hidden ? "Ocultar contraseña" : "Mostrar contraseña");
 });
 
+const loader = document.getElementById("portal-loader");
+
+function enterHome() {
+  document.body.classList.add("is-in");
+  loginView.hidden = true;
+  homeView.hidden = false;
+  loader.hidden = true;
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const emptyUser = !userInput.value.trim();
@@ -40,15 +49,15 @@ form.addEventListener("submit", (event) => {
     userInput.focus();
     return;
   }
-  document.body.classList.add("is-in");
-  loginView.hidden = true;
-  homeView.hidden = false;
+  loader.hidden = false;
+  window.setTimeout(enterHome, 1400);
 });
 
 document.getElementById("logout").addEventListener("click", () => {
   document.body.classList.remove("is-in");
   homeView.hidden = true;
   loginView.hidden = false;
+  loader.hidden = true;
   showPanel("login");
   form.reset();
   userField.classList.remove("is-error");
