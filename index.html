@@ -3,79 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Canales digitales | Fincomercio — Cooperativa de Ahorro y Crédito</title>
+    <title>Fincomercio - Cooperativa de Ahorro y Crédito</title>
     <meta
       name="description"
-      content="Gestiona tus productos Fincomercio donde y cuando quieras. App Fincomóvil, portal transaccional y canales no presenciales, fáciles, rápidos y seguros."
+      content="Fincomercio es una cooperativa de ahorro y crédito que impulsa tu bienestar con soluciones financieras y beneficios para ti y tu familia."
     />
-    <link rel="icon" href="assets/svg/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
+  <body class="home">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header class="header" id="header">
       <div class="container header__inner">
-        <a class="logo" href="#inicio" aria-label="Fincomercio inicio">
-          <span class="logo__mark" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none">
-              <path d="M7 5h24.5c5.2 0 8.5 3.6 8.5 8.2v3.3H22.2v5.2H38v8.4H22.2V43H7V5z" fill="#F15A24" />
-              <path d="M22.2 16.5H40v8.4H22.2z" fill="#163A8A" />
-            </svg>
-          </span>
-          <span class="logo__text">
-            <strong>FINCOMERCIO</strong>
-            <small>Cooperativa de Ahorro y Crédito</small>
-          </span>
+        <a class="logo" href="index.html" aria-label="Fincomercio inicio">
+          <img src="assets/img/logo.svg" alt="Logo Fincomercio" />
         </a>
 
         <nav class="nav" id="nav" aria-label="Principal">
           <ul class="nav__list">
-            <li class="nav__item has-menu">
+            <li class="has-menu">
               <button class="nav__link" data-menu="nosotros" aria-expanded="false">
                 Nosotros <span class="chevron"></span>
               </button>
               <div class="dropdown" id="menu-nosotros">
-                <a href="#nosotros">Quiénes somos</a>
-                <a href="#nosotros">Nuestra historia</a>
+                <a href="#nosotros">Nuestra cooperativa</a>
+                <a href="#nosotros">Historia</a>
                 <a href="#nosotros">Gobierno corporativo</a>
-                <a href="#canales">Sostenibilidad</a>
               </div>
             </li>
-            <li class="nav__item has-menu">
+            <li class="has-menu">
               <button class="nav__link" data-menu="beneficios" aria-expanded="false">
                 Beneficios <span class="chevron"></span>
               </button>
               <div class="dropdown" id="menu-beneficios">
-                <a href="#beneficios">Convenios</a>
-                <a href="#beneficios">Educación financiera</a>
-                <a href="#beneficios">Seguros aliados</a>
-                <a href="#beneficios">Bienestar y eventos</a>
+                <a href="#seguros">Seguros aliados</a>
+                <a href="#info">Educación financiera</a>
+                <a href="#eventos">Eventos y bienestar</a>
               </div>
             </li>
-            <li class="nav__item has-menu">
+            <li class="has-menu">
               <button class="nav__link" data-menu="productos" aria-expanded="false">
                 Productos <span class="chevron"></span>
               </button>
               <div class="dropdown" id="menu-productos">
-                <a href="#productos">Créditos</a>
+                <a href="#productos">Crédito educativo</a>
                 <a href="#productos">Ahorro digital</a>
                 <a href="#productos">CDAT digital</a>
                 <a href="#productos">Tienda virtual</a>
               </div>
             </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#vinculate">Vincúlate</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#pagos">Centro de pagos</a>
-            </li>
+            <li><a class="nav__link" href="#vinculate">Vincúlate</a></li>
+            <li><a class="nav__link" href="https://portalpagos.fincomercio.com/PagosPSEWeb/Inicio" target="_blank" rel="noopener">Centro de pagos</a></li>
           </ul>
         </nav>
 
@@ -85,13 +67,13 @@
               Canales digitales <span class="chevron chevron--light"></span>
             </button>
             <div class="dropdown dropdown--right" id="menu-canales">
-              <a href="#inicio">Canales digitales</a>
-              <a href="#fincomovil">App Fincomóvil</a>
-              <a href="#portal">Portal transaccional</a>
-              <a href="#contacto">Oficina virtual</a>
+              <a href="canales.html">Canales digitales</a>
+              <a href="canales.html#fincomovil">App Fincomóvil</a>
+              <a href="canales.html#portal">Portal transaccional</a>
+              <a href="https://finco360.fincomercio.com/" target="_blank" rel="noopener">Oficina virtual</a>
             </div>
           </div>
-          <a class="btn btn--breb" href="#breb" title="Bre-B">Bre-B</a>
+          <a class="btn btn--breb" href="canales.html#breb">Bre-B</a>
           <button class="icon-btn" id="search-open" aria-label="Buscar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="7" />
@@ -106,240 +88,143 @@
     </header>
 
     <main id="contenido">
-      <section class="hero" id="inicio">
-        <div class="hero__waves" aria-hidden="true">
-          <svg viewBox="0 0 1440 520" preserveAspectRatio="none">
-            <path
-              class="wave wave-a"
-              d="M-40 360C180 280 320 420 560 340C800 260 980 120 1220 200C1380 250 1480 180 1560 140"
-            />
-            <path
-              class="wave wave-b"
-              d="M-20 200C200 140 380 300 620 240C860 180 1040 40 1280 90C1420 120 1520 80 1600 40"
-            />
-            <path
-              class="wave wave-c"
-              d="M40 420C260 360 420 480 680 400C940 320 1100 220 1340 280"
-            />
-          </svg>
+      <section class="hero-home" aria-label="Campañas">
+        <div class="slider" id="hero-slider">
+          <article class="slide is-active">
+            <img src="assets/img/home/banner-kit.jpg" alt="Kit escolar Fincomercio" />
+          </article>
+          <article class="slide">
+            <img src="assets/img/home/banner-pensionados.jpg" alt="Crédito para pensionados" />
+          </article>
+          <article class="slide">
+            <img src="assets/img/home/banner-app.webp" alt="Banner Fincomóvil" />
+          </article>
+          <article class="slide">
+            <img src="assets/img/home/banner-becas.jpg" alt="Becas crédito Fincoeducar" />
+          </article>
+          <article class="slide">
+            <img src="assets/img/home/banner-cem.jpg" alt="Plan CEM" />
+          </article>
         </div>
+        <button class="slider-btn prev" data-slider="hero-slider" data-dir="-1" aria-label="Anterior">‹</button>
+        <button class="slider-btn next" data-slider="hero-slider" data-dir="1" aria-label="Siguiente">›</button>
+        <div class="slider-dots" data-for="hero-slider"></div>
+      </section>
 
-        <div class="container hero__grid">
-          <div class="hero__copy">
-            <h1>Canales digitales</h1>
-            <p class="hero__rule"><span></span> y no presenciales <span></span></p>
-            <p class="hero__lead">¡Gestiona tus productos donde y cuando quieras!</p>
-          </div>
-          <div class="hero__visual">
-            <img
-              src="assets/img/hero-woman.png"
-              alt="Mujer sonriendo mientras usa los canales digitales de Fincomercio en su celular"
-            />
-          </div>
+      <section class="products-home" id="productos">
+        <div class="container cards-4">
+          <a class="prod-card" href="https://www.fincomercio.com/credito-educativo" target="_blank" rel="noopener">
+            <img src="assets/img/home/card-educativo.png" alt="Crédito Educativo" />
+            <span>Crédito Educativo</span>
+          </a>
+          <a class="prod-card" href="https://www.fincomercio.com/ahorro-digital" target="_blank" rel="noopener">
+            <img src="assets/img/home/card-ahorro.png" alt="Ahorro Digital" />
+            <span>Ahorro Digital</span>
+          </a>
+          <a class="prod-card" href="https://app.fincomercio.com/FincoApp/CtrlInterfazBancaVirtual?IdOpcion=16" target="_blank" rel="noopener">
+            <img src="assets/img/home/card-cdat.png" alt="CDAT Digital" />
+            <span>Cdat Digital</span>
+          </a>
+          <a class="prod-card" href="https://tiendavirtual.fincomercio.com/" target="_blank" rel="noopener">
+            <img src="assets/img/home/card-tienda.png" alt="Tienda Virtual" />
+            <span>Tienda Virtual</span>
+          </a>
         </div>
       </section>
 
-      <section class="intro">
-        <p>Accede a nuestros servicios de manera fácil, rápida y segura.</p>
+      <section class="info-banners" id="info">
+        <div class="container">
+          <div class="slider info-slider" id="info-slider">
+            <a class="slide is-active" href="https://www.fincomercio.com/ciberseguridad/" target="_blank" rel="noopener">
+              <img src="assets/img/home/ciberseguridad.png" alt="La seguridad no es cosa de niños. No todo se comparte." />
+            </a>
+            <a class="slide" href="https://www.fincomercio.com/educacion-financiera" target="_blank" rel="noopener">
+              <img src="assets/img/home/educacion-financiera.png" alt="Sin enredos ni rodeos. Finanzas para todos." />
+            </a>
+          </div>
+          <button class="slider-btn next" data-slider="info-slider" data-dir="1" aria-label="Siguiente">›</button>
+          <div class="slider-dots" data-for="info-slider"></div>
+        </div>
       </section>
 
-      <section class="pocket" id="fincomovil">
-        <div class="pocket__dots" aria-hidden="true"></div>
-        <div class="container pocket__grid">
-          <div class="pocket__copy">
-            <h2>¡Fincomóvil en tu bolsillo!</h2>
-            <p>
-              <span class="accent">Descarga nuestra última versión de la App</span>
-              y descubre todo lo que puedes hacer al alcance de tu mano, a cualquier hora.
-            </p>
-            <div class="store-row">
-              <a class="store" href="https://onelink.to/7kupuw" target="_blank" rel="noopener">App Store</a>
-              <a class="store" href="https://onelink.to/7kupuw" target="_blank" rel="noopener">Google Play</a>
-              <a class="store" href="https://onelink.to/7kupuw" target="_blank" rel="noopener">AppGallery</a>
+      <section class="news-events">
+        <div class="container news-grid">
+          <div id="noticias">
+            <div class="section-head">
+              <h2>Noticias</h2>
+              <a href="https://www.fincomercio.com/noticias-y-prensa" target="_blank" rel="noopener">Ver más &gt;</a>
+            </div>
+            <div class="news-row">
+              <a class="news-card" href="https://www.fincomercio.com/noticias-y-prensa/ampliamos-nuestra-convocatoria-de-kits-escolares-tu-kit-escolar-un-universo-por-descubrir/" target="_blank" rel="noopener">
+                <img src="assets/img/news/kits.jpg" alt="Kits escolares" />
+                <p>¡Ampliamos la convocatoria de Kits Escolares! Tu Kit Escolar: Un universo por descubrir</p>
+              </a>
+              <a class="news-card" href="https://www.fincomercio.com/noticias-y-prensa/concurso-de-cuento-pensar-solidario-2026/" target="_blank" rel="noopener">
+                <img src="assets/img/news/cuento.jpg" alt="Concurso de cuento" />
+                <p>Concurso de Cuento "Pensar Solidario" 2026</p>
+              </a>
+              <a class="news-card" href="https://www.fincomercio.com/noticias-y-prensa/curso-de-macrame-en-bogota-2026/" target="_blank" rel="noopener">
+                <img src="assets/img/news/macrame.jpg" alt="Curso de macramé" />
+                <p>Curso de Macramé en Bogotá 2026: donde tus manos crean y tu corazón conecta</p>
+              </a>
             </div>
           </div>
 
-          <div class="pocket__panel">
-            <ul class="checks">
-              <li>Consulta el estado de tu crédito en la opción Trámites.</li>
-              <li>Compra tu boletería virtual.</li>
-              <li>Transferencias ágiles.</li>
-              <li>Descarga tus certificados.</li>
-              <li>Consulta tus saldos y movimientos.</li>
-            </ul>
-            <img
-              class="pocket__phone"
-              src="assets/img/fincomovil-phone.png"
-              alt="Aplicación Fincomóvil visualizada en un celular"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section class="channels" id="canales">
-        <div class="container">
-          <p class="eyebrow">Ecosistema digital</p>
-          <h2>Conoce los canales digitales de Fincomercio</h2>
-          <p class="section-lead">
-            La forma más fácil y segura de gestionar tus productos, realizar trámites y acceder a tu
-            información desde cualquier lugar.
-          </p>
-
-          <div class="channel-grid">
-            <article class="channel-card" id="portal">
-              <div class="channel-card__body">
-                <h3>Portal transaccional</h3>
-                <p>
-                  Accede a tu información completa y detallada, gestiona tus productos y navega de
-                  forma fácil y segura, 24/7.
-                </p>
-                <a class="btn btn--navy" href="https://portal.fincomercio.com/" target="_blank" rel="noopener"
-                  >Ingresa aquí</a
-                >
-              </div>
-              <img src="assets/img/portal-mockup.png" alt="Inicio de sesión del portal transaccional de Fincomercio" />
-            </article>
-
-            <article class="channel-card channel-card--alt">
-              <div class="channel-card__body">
-                <h3>App Fincomóvil</h3>
-                <p>La experiencia más completa en la palma de tu mano. Explórala ahora.</p>
-                <div class="btn-row">
-                  <a class="btn btn--navy" href="#fincomovil">Conoce más aquí</a>
-                  <a class="btn btn--ghost" href="https://onelink.to/7kupuw" target="_blank" rel="noopener"
-                    >Descárgala aquí</a
-                  >
+          <div id="eventos">
+            <div class="section-head">
+              <h2>Eventos</h2>
+              <a href="https://www.fincomercio.com/eventos" target="_blank" rel="noopener">Ver más &gt;</a>
+            </div>
+            <ul class="event-list">
+              <li>
+                <img src="assets/img/events/navidad.png" alt="" />
+                <div>
+                  <small>2025 / Nov / 29</small>
+                  <a href="https://www.fincomercio.com/eventos/el-festival-de-navidad-mas-magico-y-divertido-te-espera/" target="_blank" rel="noopener">¡El Festival de Navidad más mágico y divertido te espera!</a>
                 </div>
-              </div>
-              <img src="assets/img/fincomovil-phone.png" alt="Mockup de la app Fincomóvil" />
-            </article>
+              </li>
+              <li>
+                <img src="assets/img/events/aniversario.png" alt="" />
+                <div>
+                  <small>2025 / Nov / 26</small>
+                  <a href="https://www.fincomercio.com/eventos/aniversario-fincomercio-planchando-el-despecho/" target="_blank" rel="noopener">¡Celebramos 68 Años! Fincomercio te invita a "Planchando el Despecho" en Bogotá</a>
+                </div>
+              </li>
+              <li>
+                <img src="assets/img/events/concierto.jpg" alt="" />
+                <div>
+                  <small>2025 / Nov / 28</small>
+                  <a href="https://www.fincomercio.com/eventos/gran-mega-concierto/" target="_blank" rel="noopener">Gran Mega Concierto: Jessi Uribe, Guayacán Orquesta, Rafa Pérez, Los 50 de Joselito y "Yo me llamo" Wisin y Yandel</a>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <section class="helps">
+      <section class="seguros" id="seguros">
         <div class="container">
-          <h2>¿Necesitas ayuda para ingresar?</h2>
-          <div class="help-grid">
-            <a class="help-card" href="#faq">
-              <span class="help-icon">1</span>
-              <h3>¿Cómo registrarte en el Portal?</h3>
-              <p>Crea tu usuario por primera vez en pocos minutos.</p>
+          <h2>Adquiere tus seguros con nuestros aliados en línea</h2>
+          <div class="seguro-row">
+            <a href="https://app.fincomercio.com/CotizadorVirtual/CtrlInterfazBancaVirtual?IdOpcion=10" target="_blank" rel="noopener">
+              <img src="assets/img/seguro/autos.svg" alt="" />
+              <span>Póliza de autos</span>
             </a>
-            <a class="help-card" href="#faq">
-              <span class="help-icon">2</span>
-              <h3>Recupera tu usuario</h3>
-              <p>Si lo olvidaste, restablécelo de forma segura.</p>
+            <a href="https://app.fincomercio.com/CotizadorVirtual/CtrlInterfazBancaVirtual?IdOpcion=10&nTipoPoliza=4" target="_blank" rel="noopener">
+              <img src="assets/img/seguro/vida.svg" alt="" />
+              <span>Seguro de vida</span>
             </a>
-            <a class="help-card" href="#faq">
-              <span class="help-icon">3</span>
-              <h3>Cambia o desbloquea tu contraseña</h3>
-              <p>Sigue el paso a paso y vuelve a ingresar.</p>
+            <a href="https://app.fincomercio.com/CotizadorVirtual/CtrlInterfazBancaVirtual?IdOpcion=10&nTipoPoliza=5" target="_blank" rel="noopener">
+              <img src="assets/img/seguro/exequial.svg" alt="" />
+              <span>Plan exequial</span>
             </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="products" id="productos">
-        <div class="container">
-          <p class="eyebrow">También puedes</p>
-          <h2>Productos y servicios al instante</h2>
-          <div class="product-grid">
-            <article class="product-card">
-              <h3>Crédito educativo</h3>
-              <p>Financia tu formación o la de tu familia con condiciones pensadas para avanzar.</p>
-            </article>
-            <article class="product-card">
-              <h3>Ahorro digital</h3>
-              <p>Abre o consulta tu ahorro desde el celular y crea bolsillos con un propósito.</p>
-            </article>
-            <article class="product-card">
-              <h3>CDAT digital</h3>
-              <p>Invierte de forma 100% digital y haz crecer tu dinero con plazos flexibles.</p>
-            </article>
-            <article class="product-card">
-              <h3>Tienda virtual</h3>
-              <p>Encuentra convenios, boletería y beneficios exclusivos para asociados.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="faq" id="faq">
-        <div class="container faq__wrap">
-          <h2>Preguntas frecuentes</h2>
-          <div class="accordion">
-            <details open>
-              <summary>¿Cómo puedo recuperar mi usuario y/o contraseña del portal transaccional?</summary>
-              <p>
-                Haz clic en «¿Has olvidado tu usuario/contraseña?» e inicia el proceso. Si tienes
-                dudas, consulta nuestros videos con el paso a paso en Fincomóvil.
-              </p>
-            </details>
-            <details>
-              <summary>¿Cómo inscribo una cuenta de otro banco para realizar transferencias?</summary>
-              <ol>
-                <li>Ingresa al Portal Transaccional o Fincomóvil.</li>
-                <li>Selecciona «Transferencias», luego «Administrar cuentas».</li>
-                <li>Elige «Registrar cuenta» y diligencia los datos requeridos.</li>
-                <li>Al recibir el código OTP, verifica la operación.</li>
-              </ol>
-            </details>
-            <details>
-              <summary>¿Es seguro realizar transacciones desde la aplicación o el portal?</summary>
-              <p>
-                Sí. En Fincomercio realizamos monitoreo constante para proteger tus transacciones y
-                datos personales, tanto en la app como en el Portal Transaccional.
-              </p>
-            </details>
-            <details>
-              <summary>¿Qué es un código OTP y para qué sirve?</summary>
-              <p>
-                Es una contraseña de un solo uso, temporal, que permite verificar tu identidad
-                durante un inicio de sesión o una transacción.
-              </p>
-            </details>
-            <details>
-              <summary>¿Puedo pagar mis facturas de servicios públicos?</summary>
-              <p>
-                Sí. Ingresa a Fincomóvil o al Portal Transaccional y ve a la opción Tus Pagos &gt;
-                Servicios públicos.
-              </p>
-            </details>
-            <details>
-              <summary>¿Qué necesito para validar mi identidad?</summary>
-              <p>
-                Ten a la mano tu cédula de ciudadanía física y vigente. Con ella verificamos tu
-                identidad para el registro o el restablecimiento en Fincomóvil.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section class="contact" id="contacto">
-        <div class="container">
-          <h2>También puedes contactarnos a través de estos canales</h2>
-          <div class="contact-grid">
-            <a class="contact-card" href="https://api.whatsapp.com/send?phone=5715142323" target="_blank" rel="noopener">
-              <span>Chatbot</span>
-              <small>Fincobot 24/7</small>
+            <a href="https://www.fincomercio.com/seguro-de-hogar/" target="_blank" rel="noopener">
+              <img src="assets/img/seguro/hogar.svg" alt="" />
+              <span>Seguro hogar</span>
             </a>
-            <a class="contact-card" href="https://finco360.fincomercio.com/" target="_blank" rel="noopener">
-              <span>Oficina Virtual</span>
-              <small>Trámites en línea</small>
-            </a>
-            <a class="contact-card" href="tel:6013078330">
-              <span>Línea Azul</span>
-              <small>(601) 307 8330</small>
-            </a>
-            <a class="contact-card" href="https://api.whatsapp.com/send?phone=5715142323" target="_blank" rel="noopener">
-              <span>WhatsApp</span>
-              <small>Escríbenos</small>
-            </a>
-            <a class="contact-card" href="tel:6016651022">
-              <span>Línea de venta</span>
-              <small>(601) 665 1022</small>
+            <a href="https://www.fincomercio.com/asistencia-de-mascotas" target="_blank" rel="noopener">
+              <img src="assets/img/seguro/mascotas.png" alt="" />
+              <span>Asistencia de mascotas</span>
             </a>
           </div>
         </div>
@@ -351,115 +236,46 @@
             <h2>¿Aún no eres asociado?</h2>
             <p>Vincúlate a Fincomercio y lleva tu cooperativa en el bolsillo.</p>
           </div>
-          <a class="btn btn--cyan" href="#contacto">Quiero vincularme</a>
-        </div>
-      </section>
-
-      <section class="benefits" id="beneficios">
-        <div class="container">
-          <h2>Beneficios de usar los canales digitales</h2>
-          <div class="benefit-grid">
-            <article>
-              <h3>Disponibilidad</h3>
-              <p>Consulta, paga y gestiona sin horarios de oficina.</p>
-            </article>
-            <article>
-              <h3>Inmediatez</h3>
-              <p>Certificados, saldos y transferencias en minutos.</p>
-            </article>
-            <article>
-              <h3>Comodidad</h3>
-              <p>Todo desde tu celular o computador, donde estés.</p>
-            </article>
-            <article>
-              <h3>Seguridad</h3>
-              <p>Protocolos de protección para tus datos y tu dinero.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="about" id="nosotros">
-        <div class="container about__grid">
-          <div>
-            <p class="eyebrow">Nuestra cooperativa</p>
-            <h2>Más de 68 años impulsando el bienestar de los colombianos</h2>
-            <p>
-              Fincomercio es una cooperativa de ahorro y crédito que acompaña tus metas con
-              soluciones de ahorro, crédito, seguros y bienestar para ti y tu familia.
-            </p>
-          </div>
-          <ul class="stats">
-            <li><strong>1957</strong><span>Año de fundación</span></li>
-            <li><strong>24/7</strong><span>Canales digitales</span></li>
-            <li><strong>100%</strong><span>Gestión remota</span></li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="payments" id="pagos">
-        <div class="container payments__box">
-          <div>
-            <h2>Centro de pagos</h2>
-            <p>Paga tus obligaciones, servicios públicos y abonos desde Fincomóvil o el portal.</p>
-          </div>
-          <a class="btn btn--navy" href="#fincomovil">Pagar ahora</a>
-        </div>
-      </section>
-
-      <section class="breb" id="breb">
-        <div class="container breb__box">
-          <div>
-            <p class="eyebrow eyebrow--light">Interoperabilidad</p>
-            <h2>Bre-B en Fincomercio</h2>
-            <p>Envía y recibe dinero de forma inmediata entre entidades, de manera segura.</p>
-          </div>
-          <a class="btn btn--cyan" href="#fincomovil">Conocer Bre-B</a>
+          <a class="btn btn--cyan" href="https://www.fincomercio.com/" target="_blank" rel="noopener">Quiero vincularme</a>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="nosotros">
       <div class="container footer__grid">
         <div>
-          <a class="logo logo--light" href="#inicio">
-            <span class="logo__mark" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none">
-                <path d="M7 5h24.5c5.2 0 8.5 3.6 8.5 8.2v3.3H22.2v5.2H38v8.4H22.2V43H7V5z" fill="#F15A24" />
-                <path d="M22.2 16.5H40v8.4H22.2z" fill="#7EB6FF" />
-              </svg>
-            </span>
-            <span class="logo__text">
-              <strong>FINCOMERCIO</strong>
-              <small>Cooperativa de Ahorro y Crédito</small>
-            </span>
-          </a>
+          <a class="logo" href="index.html"><img src="assets/img/logo.svg" alt="Fincomercio" /></a>
           <p>Impulsamos tu bienestar con soluciones financieras y beneficios para ti y tu familia.</p>
+          <p><a href="tel:6013078330">Nacional: (601) 307 8330</a></p>
+          <p>Lunes a viernes: 8:00 a.m. a 6:00 p.m.</p>
+          <p>Sábados: 8:00 a.m. a 1:00 p.m.</p>
+          <p><a href="tel:6016651022">Línea exclusiva de ventas: (601) 665 1022</a></p>
+          <p>PBX: (601) 918 8860</p>
+        </div>
+        <div>
+          <h3>Atención</h3>
+          <a href="https://www.fincomercio.com/oficinas-puntos-de-atencion-y-asesores/" target="_blank" rel="noopener">Nuestras oficinas</a>
+          <a href="https://finco360.fincomercio.com/" target="_blank" rel="noopener">Oficina virtual</a>
+          <a href="https://www.fincomercio.com/blog-fincomercio/" target="_blank" rel="noopener">Blog</a>
+          <a href="https://rom.fincomercio.com/GestionCasos/CtrlInterfazBancaVirtual?IdOpcion=2" target="_blank" rel="noopener">Solicitudes, quejas y reclamos</a>
         </div>
         <div>
           <h3>Canales</h3>
-          <a href="#fincomovil">Fincomóvil</a>
-          <a href="#portal">Portal transaccional</a>
-          <a href="#contacto">Oficina virtual</a>
-          <a href="#contacto">Línea Azul</a>
+          <a href="canales.html">Canales digitales</a>
+          <a href="canales.html#fincomovil">Fincomóvil</a>
+          <a href="canales.html#portal">Portal transaccional</a>
+          <a href="https://portalpagos.fincomercio.com/PagosPSEWeb/Inicio" target="_blank" rel="noopener">Centro de pagos</a>
         </div>
         <div>
-          <h3>Productos</h3>
-          <a href="#productos">Créditos</a>
-          <a href="#productos">Ahorro</a>
-          <a href="#productos">CDAT</a>
-          <a href="#productos">Tienda virtual</a>
-        </div>
-        <div>
-          <h3>Contacto</h3>
-          <p>(601) 307 8330</p>
-          <p>Bogotá, Colombia</p>
-          <a href="https://www.fincomercio.com/" target="_blank" rel="noopener">www.fincomercio.com</a>
+          <h3>Legal</h3>
+          <a href="https://www.fincomercio.com/terminos-y-condiciones-pagina-web-fincomercio/" target="_blank" rel="noopener">Condiciones de uso</a>
+          <a href="https://www.fincomercio.com/aviso-de-privacidad-fincomercio/" target="_blank" rel="noopener">Privacidad de datos personales</a>
+          <a href="https://www.fincomercio.com/ciberseguridad/" target="_blank" rel="noopener">Fincomercio Seguro</a>
         </div>
       </div>
       <div class="footer__bottom">
         <div class="container">
-          <p>© 2026 Fincomercio. Cooperativa de Ahorro y Crédito. Recreación con fines educativos.</p>
+          <p>Vigilada por la Superintendencia de la Economía Solidaria. Recreación educativa.</p>
         </div>
       </div>
     </footer>
@@ -472,11 +288,11 @@
           <h2>Servicios y Atención en Línea</h2>
           <button class="icon-btn" id="drawer-close" aria-label="Cerrar">✕</button>
         </div>
-        <a href="https://api.whatsapp.com/send?phone=5715142323" target="_blank" rel="noopener">Chatbot / WhatsApp</a>
+        <a href="https://portalpagos.fincomercio.com/PagosPSEWeb/Inicio" target="_blank" rel="noopener">Pagos</a>
+        <a href="https://api.whatsapp.com/send?phone=5715142323" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://finco360.fincomercio.com/" target="_blank" rel="noopener">Oficina Virtual</a>
         <a href="tel:6013078330">Línea Azul (601) 307 8330</a>
-        <a href="tel:6016651022">Línea de venta (601) 665 1022</a>
-        <a href="https://portal.fincomercio.com/" target="_blank" rel="noopener">Portal transaccional</a>
+        <a href="canales.html">Canales digitales</a>
       </div>
     </aside>
 
@@ -485,17 +301,9 @@
         <p>¿Tienes alguna duda? Escríbenos</p>
         <button class="wa__x" id="wa-close" aria-label="Cerrar mensaje">✕</button>
       </div>
-      <a
-        class="wa__btn"
-        href="https://api.whatsapp.com/send?phone=5715142323"
-        target="_blank"
-        rel="noopener"
-        aria-label="WhatsApp"
-      >
+      <a class="wa__btn" href="https://api.whatsapp.com/send?phone=5715142323" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M20.5 3.5A11 11 0 0 0 2.1 17.7L1 23l5.4-1.1A11 11 0 0 0 12 23a11 11 0 0 0 8.5-19.5zM12 21.1a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-3.2.7.7-3.1-.2-.3A9.1 9.1 0 1 1 12 21.1zm5-6.8c-.3-.1-1.6-.8-1.9-.9s-.4-.2-.6.1-.7.9-.9 1.1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.1-.3a.5.5 0 0 0 0-.5c0-.1-.6-1.5-.8-2s-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.8 11.8 0 0 0 4.5 4 15 15 0 0 0 1.5.6 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z"
-          />
+          <path d="M20.5 3.5A11 11 0 0 0 2.1 17.7L1 23l5.4-1.1A11 11 0 0 0 12 23a11 11 0 0 0 8.5-19.5zM12 21.1a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-3.2.7.7-3.1-.2-.3A9.1 9.1 0 1 1 12 21.1zm5-6.8c-.3-.1-1.6-.8-1.9-.9s-.4-.2-.6.1-.7.9-.9 1.1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.1-.3a.5.5 0 0 0 0-.5c0-.1-.6-1.5-.8-2s-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.8 11.8 0 0 0 4.5 4 15 15 0 0 0 1.5.6 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z" />
         </svg>
       </a>
     </div>

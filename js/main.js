@@ -14,17 +14,19 @@ const waBubble = document.getElementById("wa-bubble");
 const waClose = document.getElementById("wa-close");
 
 const targets = {
-  fincomovil: "#fincomovil",
-  app: "#fincomovil",
-  portal: "#portal",
+  fincomovil: "canales.html#fincomovil",
+  app: "canales.html#fincomovil",
+  portal: "canales.html#portal",
   crédito: "#productos",
   credito: "#productos",
-  pagos: "#pagos",
-  breb: "#breb",
+  pagos: "#productos",
+  breb: "canales.html#breb",
   vincúlate: "#vinculate",
   vinculacion: "#vinculate",
-  faq: "#faq",
-  ayuda: "#faq",
+  noticias: "#noticias",
+  eventos: "#eventos",
+  faq: "canales.html#faq",
+  ayuda: "canales.html#faq",
 };
 
 function closeMenus() {
@@ -87,7 +89,12 @@ searchForm.addEventListener("submit", (event) => {
   const match = Object.keys(targets).find((key) => query.includes(key));
   if (match) {
     closeSearch();
-    document.querySelector(targets[match])?.scrollIntoView({ behavior: "smooth" });
+    const dest = targets[match];
+    if (dest.startsWith("#")) {
+      document.querySelector(dest)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = dest;
+    }
     searchHint.textContent = "Prueba con Fincomóvil, portal, crédito o pagos.";
   } else {
     searchHint.textContent = "No encontramos esa sección. Intenta con Fincomóvil o portal.";
@@ -111,6 +118,42 @@ drawer.addEventListener("click", (event) => {
 waClose.addEventListener("click", () => {
   waBubble.hidden = true;
 });
+
+function setupSlider(id) {
+  const root = document.getElementById(id);
+  if (!root) return;
+  const slides = [...root.querySelectorAll(".slide")];
+  const dotsWrap = document.querySelector(`.slider-dots[data-for="${id}"]`);
+  let index = slides.findIndex((slide) => slide.classList.contains("is-active"));
+  if (index < 0) index = 0;
+
+  function go(next) {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
+    dotsWrap?.querySelectorAll("button").forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === index);
+    });
+  }
+
+  if (dotsWrap) {
+    dotsWrap.innerHTML = slides
+      .map((_, i) => `<button type="button" aria-label="Ir a la diapositiva ${i + 1}"></button>`)
+      .join("");
+    dotsWrap.querySelectorAll("button").forEach((dot, i) => {
+      dot.addEventListener("click", () => go(i));
+    });
+  }
+
+  document.querySelectorAll(`[data-slider="${id}"]`).forEach((button) => {
+    button.addEventListener("click", () => go(index + Number(button.dataset.dir)));
+  });
+
+  go(index);
+  setInterval(() => go(index + 1), 6000);
+}
+
+setupSlider("hero-slider");
+setupSlider("info-slider");
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
