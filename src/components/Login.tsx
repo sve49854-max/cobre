@@ -39,11 +39,14 @@ export function Login() {
 
           <StaticAction className="login-forgot">¿Olvidaste tu contraseña?</StaticAction>
 
-          <div className="login-actions">
-            <button type="submit" disabled={loading} className="login-submit">
-              {loading ? <Spinner className="size-5 text-white" /> : 'Continuar'}
-            </button>
-          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="login-submit"
+            style={{ position: 'absolute', left: 40, right: 40, bottom: 40 }}
+          >
+            {loading ? <Spinner className="size-5 text-white" /> : 'Continuar'}
+          </button>
         </form>
       </div>
     </div>
