@@ -32,7 +32,7 @@ export function Login() {
         </header>
 
         <form onSubmit={onSubmit} className="login-form">
-          <label className="login-field">
+          <label className="login-field" style={{ display: 'block', marginTop: 40 }}>
             <span>Correo electrónico*</span>
             <input required type="email" name="email" autoComplete="username" />
           </label>

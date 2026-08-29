@@ -92,6 +92,7 @@ a {
 .login-field {
   position: relative;
   display: block;
+  margin-top: 40px;
 }
 
 .login-field span {
