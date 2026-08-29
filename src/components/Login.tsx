@@ -24,22 +24,28 @@ export function Login() {
 
   return (
     <div className="login-page">
-      <form onSubmit={onSubmit} className="login-card">
-        <img src="/logo-cobre-black.svg" alt="Cobre" className="login-logo" />
-        <h1 className="login-title">Bienvenido</h1>
-        <p className="login-subtitle">Inicia sesión para continuar al Portal</p>
+      <div className="login-card">
+        <header className="login-header">
+          <img src="/logo-cobre-black.svg" alt="Cobre" className="login-logo" />
+          <h1 className="login-title">Bienvenido</h1>
+          <p className="login-subtitle">Inicia sesión para continuar al Portal</p>
+        </header>
 
-        <label className="login-field">
-          <span>Correo electrónico*</span>
-          <input required type="email" name="email" autoComplete="username" />
-        </label>
+        <form onSubmit={onSubmit} className="login-form">
+          <label className="login-field">
+            <span>Correo electrónico*</span>
+            <input required type="email" name="email" autoComplete="username" />
+          </label>
 
-        <StaticAction className="login-forgot">¿Olvidaste tu contraseña?</StaticAction>
+          <StaticAction className="login-forgot">¿Olvidaste tu contraseña?</StaticAction>
 
-        <button type="submit" disabled={loading} className="login-submit">
-          {loading ? <Spinner className="size-5 text-white" /> : 'Continuar'}
-        </button>
-      </form>
+          <div className="login-actions">
+            <button type="submit" disabled={loading} className="login-submit">
+              {loading ? <Spinner className="size-5 text-white" /> : 'Continuar'}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
