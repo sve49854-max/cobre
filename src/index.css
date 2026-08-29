@@ -59,17 +59,20 @@ a {
 
 .login-header {
   padding: 40px 40px 24px;
+  text-align: center;
 }
 
 .login-logo {
   display: block;
-  height: 26px;
-  width: auto;
+  height: 26px !important;
+  width: auto !important;
+  max-width: 100%;
   margin: 0 auto;
+  object-fit: contain;
 }
 
 .login-title {
-  margin: 24px 0 0;
+  margin: 24px 0 16px;
   font-size: 28px;
   font-weight: 700;
   line-height: 1.2;
@@ -78,7 +81,7 @@ a {
 }
 
 .login-subtitle {
-  margin: 16px 0 0;
+  margin: 0;
   font-size: 17px;
   line-height: 1.5;
   color: #575655;
@@ -92,7 +95,6 @@ a {
 .login-field {
   position: relative;
   display: block;
-  margin-top: 40px;
 }
 
 .login-field span {
