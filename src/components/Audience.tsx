@@ -14,7 +14,7 @@ export function Audience() {
             Para empresas con alto volumen transaccional
           </h2>
           <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-ink/70">
-            Diseñado para Fintechs con licencia, PSPs, Bancos y empresas que necesitan operar sin fricción.
+            Optimiza tu operación como institución financiera, PSP o empresa.
           </p>
           <ul className="mt-8 space-y-4">
             {POINTS.map((point) => (
@@ -24,12 +24,12 @@ export function Audience() {
               </li>
             ))}
           </ul>
-          <a
-            href="#contacto"
-            className="mt-10 inline-flex rounded-full border border-ink bg-ink px-4 py-2 text-[14px] text-cream transition hover:bg-black"
+          <button
+            type="button"
+            className="mt-10 inline-flex rounded-full border border-ink bg-ink px-4 py-2 text-[14px] text-cream"
           >
             Contacta a ventas
-          </a>
+          </button>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {[

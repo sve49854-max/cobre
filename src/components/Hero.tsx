@@ -9,13 +9,13 @@ export function Hero() {
         <p className="mt-5 max-w-[34rem] text-[16px] leading-relaxed text-cream/90 sm:text-[18px]">
           Centraliza tu operación local e internacional en una sola plataforma.
         </p>
-        <a
-          href="#contacto"
-          className="mt-10 inline-flex items-center gap-2 rounded-full bg-cream px-5 py-2.5 text-[15px] text-ink transition hover:bg-white"
+        <button
+          type="button"
+          className="mt-10 inline-flex items-center gap-2 rounded-full bg-cream px-5 py-2.5 text-[15px] text-ink"
         >
           Comienza hoy
           <span aria-hidden>›</span>
-        </a>
+        </button>
       </div>
     </section>
   )

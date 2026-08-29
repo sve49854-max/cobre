@@ -22,6 +22,18 @@ const FAQS = [
     a: 'Utiliza nuestra infraestructura vía API para automatizar procesos masivos o gestiona tu tesorería desde nuestra plataforma intuitiva. Elige la modalidad que mejor se adapte a tu volumen transaccional.',
   },
   {
+    q: '¿Es seguro usar Cobre para manejar información bancaria?',
+    a: 'Sí. Cobre utiliza estándares de seguridad bancaria y encriptación avanzada para garantizar la protección de los datos y la confidencialidad de las transacciones.',
+  },
+  {
+    q: '¿Qué es Cobre Connect?',
+    a: 'Cobre Connect es la solución de agregación bancaria que permite centralizar todas las cuentas bancarias de tu empresa en una sola plataforma. Consulta saldos y movimientos de Bancolombia, Occidente, Bogotá y BBVA en tiempo real, inicia pagos sin cambiar de portal y concilia más rápido con una única fuente de verdad.',
+  },
+  {
+    q: '¿Es seguro operar con Cobre?',
+    a: 'Sí. Cobre mantiene certificaciones ISO 27001, PCI DSS y SOC 2, encriptación end-to-end, monitoreo 24/7 y MFA. Como entidad vigilada por la Superintendencia Financiera de Colombia, cumple SARLAFT y protección al consumidor financiero.',
+  },
+  {
     q: '¿Cómo puedo ser cliente de Cobre?',
     a: 'Compártenos tus datos e inicia tu proceso de diseño de solución de pagos con Cobre. Un ejecutivo de cuenta se comunicará contigo para entender las necesidades de tu empresa.',
   },

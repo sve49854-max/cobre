@@ -1,4 +1,5 @@
 import { Logo } from './Logo'
+import { StaticAction } from './StaticAction'
 
 const COLUMNS = [
   {
@@ -55,9 +56,7 @@ export function Footer() {
                 <ul className="mt-4 space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link}>
-                      <a href="#productos" className="text-[14px] text-cream/85 hover:text-white">
-                        {link}
-                      </a>
+                      <StaticAction className="text-[14px] text-cream/85">{link}</StaticAction>
                     </li>
                   ))}
                 </ul>
@@ -68,12 +67,8 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] text-cream/50 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Cobre / All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="#iniciar" className="hover:text-cream">
-              Políticas de privacidad
-            </a>
-            <a href="#iniciar" className="hover:text-cream">
-              Términos y condiciones
-            </a>
+            <StaticAction className="hover:text-cream">Políticas de privacidad</StaticAction>
+            <StaticAction className="hover:text-cream">Términos y condiciones</StaticAction>
           </div>
         </div>
       </div>

@@ -78,12 +78,12 @@ export function Products() {
               <p className="mt-4 text-[11px] leading-relaxed text-muted">{product.note}</p>
             ) : null}
             <div className="mt-auto pt-8">
-              <a
-                href="#contacto"
-                className="inline-flex w-fit rounded-full bg-cream px-4 py-2 text-[14px] text-ink transition hover:bg-white"
+              <button
+                type="button"
+                className="inline-flex w-fit rounded-full bg-cream px-4 py-2 text-[14px] text-ink"
               >
                 Conoce más
-              </a>
+              </button>
             </div>
           </article>
         ))}

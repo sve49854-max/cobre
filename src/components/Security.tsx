@@ -27,7 +27,7 @@ export function Security() {
           Seguridad y cumplimiento de clase mundial
         </h2>
         <p className="mt-4 max-w-xl text-[15px] text-cream/70">
-          Protección de nivel bancario impulsada por IA para que tus pagos fluyan con confianza.
+          Asegura tu operación con certificaciones globales y normativa colombiana.
         </p>
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">

@@ -1,9 +1,9 @@
 export function ChatWidget() {
   return (
-    <a
-      href="#contacto"
-      className="fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center rounded-full bg-[#1b72e8] text-white shadow-lg shadow-black/30 transition hover:scale-105"
-      aria-label="Abrir chat"
+    <button
+      type="button"
+      className="fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center rounded-full bg-[#1b72e8] text-white shadow-lg shadow-black/30"
+      aria-label="Chat"
     >
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
         <path
@@ -11,6 +11,6 @@ export function ChatWidget() {
           fill="currentColor"
         />
       </svg>
-    </a>
+    </button>
   )
 }

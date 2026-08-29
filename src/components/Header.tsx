@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Logo } from './Logo'
+import { StaticAction } from './StaticAction'
 
 const PRODUCTS = [
   { title: 'Local Payments', desc: 'Pagos inmediatos 24/7 en Colombia y México' },
@@ -42,7 +43,6 @@ function Flag({ country }: { country: 'mx' | 'us' }) {
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const [login, setLogin] = useState(false)
 
   return (
     <header className="sticky top-0 z-40">
@@ -50,12 +50,9 @@ export function Header() {
         <p className="max-w-[42rem] leading-snug sm:max-w-none">
           Descubre cómo Servientrega duplicó sus entregas con Bre-B gracias a Cobre
         </p>
-        <a
-          href="#contacto"
-          className="hidden shrink-0 rounded-full bg-ink px-3 py-1 text-xs text-white transition hover:bg-black sm:inline-flex"
-        >
+        <StaticAction className="hidden shrink-0 rounded-full bg-ink px-3 py-1 text-xs text-white sm:inline-flex">
           Agendar una demo
-        </a>
+        </StaticAction>
       </div>
 
       <div className="border-b border-white/5 bg-ink">
@@ -65,9 +62,7 @@ export function Header() {
           <nav className="hidden items-center gap-8 text-[15px] text-cream md:flex">
             <Dropdown label="Productos" items={PRODUCTS} />
             <Dropdown label="Recursos" items={RESOURCES} />
-            <a href="#documentacion" className="transition hover:text-white">
-              Documentación
-            </a>
+            <StaticAction className="transition hover:text-white">Documentación</StaticAction>
           </nav>
 
           <div className="ml-auto flex items-center gap-3 lg:gap-5">
@@ -76,20 +71,15 @@ export function Header() {
               <Flag country="mx" />
               <Flag country="us" />
             </div>
-            <button
-              type="button"
-              id="iniciar"
-              onClick={() => setLogin(true)}
+            <a
+              href="#login"
               className="hidden rounded-full border border-white/80 px-[18px] py-1.5 text-[15px] text-cream transition hover:bg-white/10 sm:inline-flex"
             >
               Iniciar sesión
-            </button>
-            <a
-              href="#contacto"
-              className="rounded-full bg-white px-[18px] py-1.5 text-[15px] text-ink transition hover:bg-cream"
-            >
-              Comienza hoy
             </a>
+            <StaticAction className="rounded-full bg-white px-[18px] py-1.5 text-[15px] text-ink">
+              Comienza hoy
+            </StaticAction>
             <button
               type="button"
               className="inline-flex size-10 items-center justify-center rounded-full border border-white/20 text-cream md:hidden"
@@ -102,51 +92,15 @@ export function Header() {
         </div>
         {open ? (
           <nav className="grid gap-1 border-t border-white/10 px-5 py-4 text-cream md:hidden">
-            <a href="#productos" className="py-2" onClick={() => setOpen(false)}>
-              Productos
-            </a>
-            <a href="#documentacion" className="py-2" onClick={() => setOpen(false)}>
-              Recursos
-            </a>
-            <a href="#documentacion" className="py-2" onClick={() => setOpen(false)}>
-              Documentación
-            </a>
-            <button type="button" className="py-2 text-left" onClick={() => setLogin(true)}>
+            <StaticAction className="py-2 text-left">Productos</StaticAction>
+            <StaticAction className="py-2 text-left">Recursos</StaticAction>
+            <StaticAction className="py-2 text-left">Documentación</StaticAction>
+            <a href="#login" className="py-2" onClick={() => setOpen(false)}>
               Iniciar sesión
-            </button>
+            </a>
           </nav>
         ) : null}
       </div>
-
-      {login ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setLogin(false)}>
-          <form
-            className="w-full max-w-sm rounded-2xl bg-ink p-6 text-cream shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-            onSubmit={(event) => {
-              event.preventDefault()
-              setLogin(false)
-            }}
-          >
-            <h2 className="font-serif text-2xl">Iniciar sesión</h2>
-            <p className="mt-1 text-sm text-cream/60">Accede al Portal Empresarial de Cobre.</p>
-            <label className="mt-5 grid gap-1.5 text-[13px]">
-              Correo
-              <input required type="email" className="rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-[15px] outline-none" />
-            </label>
-            <label className="mt-3 grid gap-1.5 text-[13px]">
-              Contraseña
-              <input required type="password" className="rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-[15px] outline-none" />
-            </label>
-            <button type="submit" className="mt-5 w-full rounded-full bg-cream py-2.5 text-ink">
-              Entrar
-            </button>
-            <button type="button" className="mt-3 w-full text-sm text-cream/50" onClick={() => setLogin(false)}>
-              Cancelar
-            </button>
-          </form>
-        </div>
-      ) : null}
     </header>
   )
 }
@@ -167,16 +121,12 @@ function Dropdown({
         </svg>
       </button>
       <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#2a2a2a] p-2 shadow-2xl opacity-100">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#2a2a2a] p-2 shadow-2xl">
           {items.map((item) => (
-            <a
-              key={item.title}
-              href="#productos"
-              className="block rounded-xl px-3 py-2.5 text-left transition hover:bg-white/5"
-            >
+            <div key={item.title} className="block rounded-xl px-3 py-2.5 text-left">
               <div className="text-sm text-cream">{item.title}</div>
               <div className="text-xs text-muted">{item.desc}</div>
-            </a>
+            </div>
           ))}
         </div>
       </div>

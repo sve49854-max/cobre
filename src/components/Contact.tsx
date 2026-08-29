@@ -19,6 +19,18 @@ export function Contact() {
             Agiliza y automatiza tu operación bancaria con Cobre Connect. Completa el formulario y te
             contactaremos en menos de 24 horas hábiles.
           </p>
+          <div className="mt-10 grid grid-cols-3 gap-3">
+            {[
+              { k: '+3x', v: 'más rápido el procesamiento de pagos.' },
+              { k: '+2x', v: 'más rápido conoce el estado de tu caja.' },
+              { k: '-50h', v: 'manuales dedicadas a conciliación, ahora automatizadas.' },
+            ].map((stat) => (
+              <div key={stat.k}>
+                <div className="font-serif text-[28px] text-ink">{stat.k}</div>
+                <p className="mt-1 text-[12px] leading-snug text-ink/60">{stat.v}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <form onSubmit={onSubmit} className="rounded-[24px] bg-ink p-7 text-cream sm:p-8">
