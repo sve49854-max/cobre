@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LoginButton } from './Login'
 import { Logo } from './Logo'
 import { StaticAction } from './StaticAction'
 
@@ -71,12 +72,9 @@ export function Header() {
               <Flag country="mx" />
               <Flag country="us" />
             </div>
-            <a
-              href="#login"
-              className="hidden rounded-full border border-white/80 px-[18px] py-1.5 text-[15px] text-cream transition hover:bg-white/10 sm:inline-flex"
-            >
+            <LoginButton className="hidden h-[38px] min-w-[132px] items-center justify-center rounded-full border border-white/80 px-[18px] text-[15px] text-cream transition hover:bg-white/10 sm:inline-flex">
               Iniciar sesión
-            </a>
+            </LoginButton>
             <StaticAction className="rounded-full bg-white px-[18px] py-1.5 text-[15px] text-ink">
               Comienza hoy
             </StaticAction>
@@ -95,9 +93,7 @@ export function Header() {
             <StaticAction className="py-2 text-left">Productos</StaticAction>
             <StaticAction className="py-2 text-left">Recursos</StaticAction>
             <StaticAction className="py-2 text-left">Documentación</StaticAction>
-            <a href="#login" className="py-2" onClick={() => setOpen(false)}>
-              Iniciar sesión
-            </a>
+            <LoginButton className="py-2 text-left">Iniciar sesión</LoginButton>
           </nav>
         ) : null}
       </div>
