@@ -1,6 +1,7 @@
 import { type FormEvent, useEffect, useState } from 'react'
 import { LoadingScreen, Spinner } from './Spinner'
 import { StaticAction } from './StaticAction'
+import './Login.css'
 
 export function Login() {
   const [ready, setReady] = useState(false)
@@ -8,8 +9,14 @@ export function Login() {
   const [waiting, setWaiting] = useState(false)
 
   useEffect(() => {
+    document.documentElement.classList.add('login-open')
+    document.body.classList.add('login-open')
     const timer = window.setTimeout(() => setReady(true), 1400)
-    return () => window.clearTimeout(timer)
+    return () => {
+      document.documentElement.classList.remove('login-open')
+      document.body.classList.remove('login-open')
+      window.clearTimeout(timer)
+    }
   }, [])
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -33,18 +40,13 @@ export function Login() {
 
         <form onSubmit={onSubmit} className="login-form">
           <label className="login-field">
-            <span>Correo electrónico*</span>
+            <span>Correo electrónico *</span>
             <input required type="email" name="email" autoComplete="username" />
           </label>
 
           <StaticAction className="login-forgot">¿Olvidaste tu contraseña?</StaticAction>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="login-submit"
-            style={{ position: 'absolute', left: 40, right: 40, bottom: 40 }}
-          >
+          <button type="submit" disabled={loading} className="login-submit">
             {loading ? <Spinner className="size-5 text-white" /> : 'Continuar'}
           </button>
         </form>
