@@ -23,22 +23,22 @@ export function Login() {
   }
 
   return (
-    <div className="relative flex min-h-svh items-center justify-center overflow-hidden px-4 py-10">
+    <div className="relative flex min-h-svh items-center justify-center overflow-hidden px-4 py-8">
       <div className="login-backdrop absolute inset-0" aria-hidden />
       <form
         onSubmit={onSubmit}
-        className="relative w-full max-w-[400px] rounded-[22px] bg-white px-8 py-10 text-center shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:px-10 sm:py-12"
+        className="relative w-full max-w-[400px] rounded-2xl bg-white px-10 pb-8 pt-7 text-left shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
       >
-        <img
-          src="/logo-cobre.svg"
-          alt="Cobre"
-          className="mx-auto h-8 w-auto brightness-0"
-        />
-        <h1 className="mt-8 text-[34px] font-semibold tracking-tight text-ink">Bienvenido</h1>
-        <p className="mt-2 text-[15px] text-[#8a8a8a]">Inicia sesión para continuar al Portal</p>
+        <img src="/logo-cobre-black.svg" alt="Cobre" className="mx-auto h-[26px] w-auto" />
+        <h1 className="mt-6 text-center text-[28px] font-semibold leading-tight text-[#212121]">
+          Bienvenido
+        </h1>
+        <p className="mt-2 text-center text-[15px] text-[#575655]">
+          Inicia sesión para continuar al Portal
+        </p>
 
-        <label className="relative mt-10 block text-left">
-          <span className="absolute -top-2 left-3 bg-white px-1 text-[12px] text-[#8a8a8a]">
+        <label className="relative mt-8 block">
+          <span className="absolute -top-2 left-3 bg-white px-1 text-[13px] text-[#575655]">
             Correo electrónico*
           </span>
           <input
@@ -46,18 +46,18 @@ export function Login() {
             type="email"
             name="email"
             autoComplete="username"
-            className="h-12 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-[15px] text-ink outline-none focus:border-ink"
+            className="h-11 w-full rounded border border-[#A4A3A1] bg-white px-3 text-[15px] text-[#212121] outline-none focus:border-[#212121]"
           />
         </label>
 
-        <div className="mt-3 text-left">
-          <StaticAction className="text-[14px] text-[#2f6fed]">¿Olvidaste tu contraseña?</StaticAction>
+        <div className="mt-3">
+          <StaticAction className="text-[13px] text-[#266D6C]">¿Olvidaste tu contraseña?</StaticAction>
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="mt-8 inline-flex h-12 w-full items-center justify-center rounded-full bg-[#2a2a2a] text-[16px] font-medium text-white disabled:opacity-90"
+          className="mt-7 inline-flex h-11 w-full items-center justify-center rounded-full bg-[#212121] text-[15px] font-medium text-white disabled:opacity-90"
         >
           {loading ? <Spinner className="size-5 text-white" /> : 'Continuar'}
         </button>

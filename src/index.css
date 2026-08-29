@@ -30,7 +30,5 @@ a {
 }
 
 .login-backdrop {
-  background:
-    linear-gradient(rgba(20, 14, 10, 0.18), rgba(20, 14, 10, 0.22)),
-    url('/login-bg.jpg') center / cover no-repeat;
+  background: #000 url('/login-bg.jpg') center / cover no-repeat;
 }
