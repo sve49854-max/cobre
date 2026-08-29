@@ -23,21 +23,21 @@ export function Login() {
   }
 
   return (
-    <div className="relative flex min-h-svh items-center justify-center overflow-hidden px-4 py-8">
+    <div className="relative grid min-h-svh place-items-center overflow-hidden">
       <div className="login-backdrop absolute inset-0" aria-hidden />
       <form
         onSubmit={onSubmit}
-        className="relative flex h-[542px] w-[400px] max-w-[calc(100vw-2rem)] flex-col rounded-[16px] bg-white px-10 pb-10 pt-8 text-left shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
+        className="relative flex h-[542px] w-[400px] max-w-[calc(100vw-2rem)] flex-col rounded-[16px] bg-white px-10 pb-12 pt-8 text-left shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
       >
         <img src="/logo-cobre-black.svg" alt="Cobre" className="mx-auto h-[26px] w-auto" />
-        <h1 className="mt-6 text-center text-[28px] font-semibold leading-tight text-[#212121]">
+        <h1 className="mt-10 text-left text-[28px] font-semibold leading-tight text-[#212121]">
           Bienvenido
         </h1>
-        <p className="mt-2 text-center text-[15px] text-[#575655]">
+        <p className="mt-2 text-left text-[15px] text-[#575655]">
           Inicia sesión para continuar al Portal
         </p>
 
-        <label className="relative mt-8 block">
+        <label className="relative mt-10 block">
           <span className="absolute -top-2 left-3 bg-white px-1 text-[13px] text-[#575655]">
             Correo electrónico*
           </span>
