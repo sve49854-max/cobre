@@ -27,7 +27,7 @@ export function Login() {
       <div className="login-backdrop absolute inset-0" aria-hidden />
       <form
         onSubmit={onSubmit}
-        className="relative w-full max-w-[400px] rounded-2xl bg-white px-10 pb-8 pt-7 text-left shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
+        className="relative flex h-[542px] w-[400px] max-w-[calc(100vw-2rem)] flex-col rounded-[16px] bg-white px-10 pb-10 pt-8 text-left shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
       >
         <img src="/logo-cobre-black.svg" alt="Cobre" className="mx-auto h-[26px] w-auto" />
         <h1 className="mt-6 text-center text-[28px] font-semibold leading-tight text-[#212121]">
@@ -57,7 +57,7 @@ export function Login() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-7 inline-flex h-11 w-full items-center justify-center rounded-full bg-[#212121] text-[15px] font-medium text-white disabled:opacity-90"
+          className="mt-auto inline-flex h-11 w-full items-center justify-center rounded-full bg-[#212121] text-[15px] font-medium text-white disabled:opacity-90"
         >
           {loading ? <Spinner className="size-5 text-white" /> : 'Continuar'}
         </button>
