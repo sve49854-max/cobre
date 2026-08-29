@@ -31,19 +31,6 @@ a {
 
 .login-backdrop {
   background:
-    linear-gradient(90deg, rgba(28, 22, 16, 0.28), rgba(18, 14, 10, 0.42)),
-    radial-gradient(120% 80% at 20% 50%, #6b5340 0%, transparent 55%),
-    linear-gradient(105deg, #4a3a2c 0%, #7a6550 28%, #c4b29a 46%, #8a7460 58%, #2b241c 100%);
-}
-
-.login-backdrop::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    95deg,
-    transparent 0 10px,
-    rgba(255, 255, 255, 0.035) 10px 12px
-  );
-  filter: blur(10px);
+    linear-gradient(rgba(20, 14, 10, 0.18), rgba(20, 14, 10, 0.22)),
+    url('/login-bg.jpg') center / cover no-repeat;
 }
